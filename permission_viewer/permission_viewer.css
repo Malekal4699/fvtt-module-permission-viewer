@@ -1,0 +1,37 @@
+/* Thanks to : https://css-tricks.com/1-element-css-rainbow-gradient-infinity/ */
+
+div.permission-viewer {
+  max-width: 25px;
+  margin: auto;
+}
+
+.permission-viewer-user {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 2px;
+}
+
+.permission-viewer-gradient {
+  /* relevant styles */
+  display: flex;
+  justify-content: flex-end;
+  transform-style: preserve-3d;
+  max-width: 30px;
+  margin: auto;
+}
+.permission-viewer-gradient:before, .permission-viewer-infinity-gradient:after {
+  margin: 0 -1.8px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transform: rotatex(1deg);
+  background: radial-gradient(circle at 51.5% 50%, rgba(255, 255, 255, 0) calc(7.5px - 1px), rgba(255, 255, 255, 0.75) 7.5px), radial-gradient(circle at 59.1% 61.36%, rgba(255, 255, 255, 0) calc(7.725px - 1px), rgba(255, 255, 255, 0.35) 7.725px), radial-gradient(circle at 64.39% 43.9%, rgba(255, 255, 255, 0) calc(7.725px - 1px), rgba(255, 255, 255, 0.35) 7.725px), radial-gradient(circle at 54.17% 54.92%, rgba(255, 255, 255, 0) calc(7.725px - 1px), rgba(255, 255, 255, 0.5) 7.725px), radial-gradient(circle at 49.62% 51.87%, rgba(255, 255, 255, 0.5) calc(4.125px - 1px), rgba(255, 255, 255, 0) 4.125px), radial-gradient(circle at 61.36% 0, rgba(255, 255, 255, 0.35) calc(4.125px - 1px), rgba(255, 255, 255, 0) 4.125px) 50% 100%/100% 50% no-repeat, radial-gradient(circle at 52.27% 0, rgba(255, 255, 255, 0.35) calc(4.125px - 1px), rgba(255, 255, 255, 0) 4.125px) 50% 100%/100% 50% no-repeat, radial-gradient(#fff 3.9px, rgba(255, 255, 255, 0) calc(3.9px + 1px), rgba(255, 255, 255, 0) calc(7.5px - 1px), #fff calc(7.5px - .5px)), conic-gradient(from 90deg, hsl(calc(150 + var(--off, 0)), 85%, 57%), hsl(calc(127.5 + var(--off, 0)), 85%, 57%), hsl(calc(105 + var(--off, 0)), 85%, 57%), hsl(calc(82.5 + var(--off, 0)), 85%, 57%), hsl(calc(60 + var(--off, 0)), 85%, 57%), hsl(calc(37.5 + var(--off, 0)), 85%, 57%), hsl(calc(15 + var(--off, 0)), 85%, 57%), hsl(calc(-7.5 + var(--off, 0)), 85%, 57%), hsl(calc(-30 + var(--off, 0)), 85%, 57%));
+  -webkit-mask: radial-gradient(transparent calc(3.9px - .5px), red 3.9px);
+  mask: radial-gradient(transparent calc(3.9px - .5px), red 3.9px);
+  content: "";
+}
+.permission-viewer-infinity-gradient:after {
+  transform: translatey(1px) rotatex(-1deg);
+  background: radial-gradient(circle at 63.9% 100%, rgba(255, 255, 255, 0) calc(7.725px - 1px), rgba(255, 255, 255, 0.35) 7.725px) 50% 0/100% 50% no-repeat, radial-gradient(circle at 54.75% 100%, rgba(255, 255, 255, 0) calc(7.725px - 1px), rgba(255, 255, 255, 0.35) 7.725px) 50% 0/100% 50% no-repeat, radial-gradient(circle at 51.95% 54.94%, rgba(255, 255, 255, 0) calc(7.725px - 1px), rgba(255, 255, 255, 0.35) 7.725px), radial-gradient(circle at 51% 50.5%, rgba(255, 255, 255, 0.5) 3.9px, rgba(255, 255, 255, 0) calc(3.9px + 1px)), radial-gradient(#fff 3.9px, rgba(255, 255, 255, 0) calc(3.9px + 1px), rgba(255, 255, 255, 0) calc(7.5px - 1px), #fff calc(7.5px - .5px)), conic-gradient(from 270deg, hsl(calc(150 + var(--off, 0)), 85%, 57%), hsl(calc(172.5 + var(--off, 0)), 85%, 57%), hsl(calc(195 + var(--off, 0)), 85%, 57%), hsl(calc(217.5 + var(--off, 0)), 85%, 57%), hsl(calc(240 + var(--off, 0)), 85%, 57%), hsl(calc(262.5 + var(--off, 0)), 85%, 57%), hsl(calc(285 + var(--off, 0)), 85%, 57%), hsl(calc(307.5 + var(--off, 0)), 85%, 57%), hsl(calc(330 + var(--off, 0)), 85%, 57%));
+}
