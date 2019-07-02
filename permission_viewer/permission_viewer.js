@@ -5,29 +5,42 @@ class PermissionViewer {
 	for (let li of html.find("li.directory-item")) {
 	    li = $(li)
 	    let entity = collection.get(li.attr("data-entity-id"))
-	    let default_permission = entity.data.permission["default"]
-	    let classes = ["permission-viewer"]
+	    let max_width = 0;
 	    let users = []
-	    if (default_permission >= ENTITY_PERMISSIONS.OBSERVER) {
-		classes.push("gradient")
-		if (default_permission == ENTITY_PERMISSIONS.OWNER) {
-		    classes.push("infinity-gradient")
-		}
-	    } else {
-		for (let id in entity.data.permission) {
+	    for (let id in entity.data.permission) {
+		let permission = entity.data.permission[id]
+		if (permission >= ENTITY_PERMISSIONS.LIMITED) {
+		    let bg_color = "transparent"
 		    if (id != "default") {
 			let user = game.users.get(id)
 			if (user) {
-			    let user_div = $('<div class="permission-viewer-user"></div>')
-			    user_div.attr("data-user-id", id)
-			    user_div.css('background', user.data.color)
-			    users.push(user_div)
+			    bg_color = user.data.color;
+			} else {
+			    continue;
 			}
 		    }
+		    let user_div = $('<div></div>')
+		    user_div.attr("data-user-id", id)
+		    if (permission == ENTITY_PERMISSIONS.LIMITED) {
+			user_div.addClass("permission-viewer-limited")
+		    } else if (permission == ENTITY_PERMISSIONS.OBSERVER) {
+			user_div.addClass("permission-viewer-observer")
+		    } else if (permission == ENTITY_PERMISSIONS.OWNER) {
+			user_div.addClass("permission-viewer-owner")
+		    }
+		    if (id == "default") {
+			user_div.addClass("permission-viewer-all")
+			max_width += 16;
+		    } else {
+			user_div.addClass("permission-viewer-user")
+			max_width += 12;
+		    }
+		    user_div.css({'background-color': bg_color})
+		    users.push(user_div)
 		}
 	    }
-	    default_permission = entity.data.permission["default"]
-	    let div = $('<div class="' + classes.join(" permission-viewer-") + '"></div>')
+	    let div = $('<div class="permission-viewer"></div>')
+	    div.css("max-width", max_width)
 	    for (let user_div of users) {
 		div.append(user_div)
 	    }
@@ -38,7 +51,7 @@ class PermissionViewer {
 	for (let user_div of $(".permission-viewer-user")) {
 	    let id = $(user_div).attr("data-user-id")
 	    if (id == user.id) {
-		$(user_div).css('background', user.data.color)
+		$(user_div).css('background-color', user.data.color)
 	    }
 	}
     }
