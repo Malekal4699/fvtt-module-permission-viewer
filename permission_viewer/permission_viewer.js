@@ -55,6 +55,79 @@ class PermissionViewer {
 	    }
 	}
     }
+
+    _onShowPlayers(event) {
+	let default_permission = ENTITY_PERMISSIONS.NONE
+	let sharedWith = []
+	let permissions = this.object.data.permission
+	for (let id in permissions) {
+	    if (id != "default" && permissions[id] >= ENTITY_PERMISSIONS.LIMITED) {
+		let user = game.users.get(id)
+		if (user != undefined) {
+		    sharedWith.push(user.name)
+		}
+	    } else if (id == "default") {
+		default_permission = permissions[id]
+	    }
+	}
+	event.preventDefault();
+	if (default_permission >= ENTITY_PERMISSIONS.LIMITED) {
+	    this.object.show(this._sheetMode, true);
+	} else {
+	    let buttons = {"show": {"label": "Show to All",
+				    "callback": () => this.object.show(this._sheetMode, true)},
+			   "share": {"label": "Share with All",
+				     "callback": () => {
+					 // Need to do a copy of the object, otherwise, the entity itself gets changes
+					 // and the update() doesn't trigger any update on the server.
+					 permissions = JSON.parse(JSON.stringify(permissions));
+					 permissions["default"] = ENTITY_PERMISSIONS.LIMITED;
+					 // Can't use "permission.default" otherwise it doesn't trigger a journal
+					 // directory re-render
+					 this.object.update({permission: permissions})
+					 this.object.show(this._sheetMode, true);
+				     }
+				    }
+			  }
+	    let message = "<h3>This Journal Entry is not shared with anyone.</h3>" +
+		"<p>Do you want to share it with all players before showing it,</p>" +
+		"<p>or do you want to show it to all players without sharing it.</p>" +
+		"<p>If you decide to share it, its default permissions will be set as Limited</p>"
+	    if (sharedWith.length > 0) {
+		message = "<h3>This Journal Entry is shared with the following players.</h3>" +
+		    "<p><strong>" + sharedWith.join(", ") + "</strong></p>" +
+		    "<p>Do you want to share it with all players before showing it,</p>" +
+		    "<p>or do you want to show it to all players without sharing it,</p>" +
+		    "<p>or do you want to show it only to the players that it is already shared with?</p>" +
+		    "<p>If you decide to share it, its default permissions will be set as Limited</p>"
+		buttons["display"] = {"label": "Show to list",
+				      "callback": () => this.object.show(this._sheetMode, false)}
+	    }
+	    new Dialog({"title": "Show Journal Entry to Players",
+			"content": message,
+			"buttons": buttons,
+			"default": "show"
+		       }).render(true)
+	}
+    }
+
+    static patchFunction(func, line_number, line, new_line) {
+	let funcStr = func.toString()
+	let lines = funcStr.split("\n")
+	if (lines[line_number].trim() == line.trim()) {
+	    let fixed = funcStr.replace(line, new_line)
+	    func = eval ("(function " + fixed + ")")
+	    //console.log("Replaced ", funcStr, " with : ", func.toString())
+	}
+    }
+
+    static init() {
+	JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
+	// Patch bug in Journal._showEntry if it's there
+	PermissionViewer.patchFunction(Journal._showEntry, 9,
+				       "entry.sheet.render(force, {sheetMode: mode});",
+				       "entry.sheet.render(true, {sheetMode: mode});")
+    }
 }
 
 Hooks.on('renderJournalDirectory', PermissionViewer.directoryRendered)
@@ -62,3 +135,4 @@ Hooks.on('renderSceneDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderActorDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderItemDirectory', PermissionViewer.directoryRendered)
 Hooks.on('updateUser', PermissionViewer.userUpdated)
+Hooks.on('init', PermissionViewer.init)
