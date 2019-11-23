@@ -9,7 +9,7 @@ class PermissionViewer {
             let users = []
             for (let id in entity.data.permission) {
                 let permission = entity.data.permission[id]
-                if (permission >= ENTITY_PERMISSIONS.LIMITED) {
+                if (permission >= CONST.ENTITY_PERMISSIONS.LIMITED) {
                     let bg_color = "transparent"
                     if (id != "default") {
                         let user = game.users.get(id)
@@ -23,12 +23,12 @@ class PermissionViewer {
                     let width = 8;
                     let hyp = false;
                     user_div.attr("data-user-id", id)
-                    if (permission == ENTITY_PERMISSIONS.LIMITED) {
+                    if (permission == CONST.ENTITY_PERMISSIONS.LIMITED) {
                         user_div.addClass("permission-viewer-limited")
                         hyp = true;
-                    } else if (permission == ENTITY_PERMISSIONS.OBSERVER) {
+                    } else if (permission == CONST.ENTITY_PERMISSIONS.OBSERVER) {
                         user_div.addClass("permission-viewer-observer")
-                    } else if (permission == ENTITY_PERMISSIONS.OWNER) {
+                    } else if (permission == CONST.ENTITY_PERMISSIONS.OWNER) {
                         user_div.addClass("permission-viewer-owner")
                     }
                     if (id == "default") {
@@ -66,13 +66,13 @@ class PermissionViewer {
         event.preventDefault();
         await this.submit();
         let permissions = this.object.data.permission;
-        let default_permission = permissions.default || ENTITY_PERMISSIONS.NONE;
-        if (default_permission >= ENTITY_PERMISSIONS.LIMITED) {
+        let default_permission = permissions.default || CONST.ENTITY_PERMISSIONS.NONE;
+        if (default_permission >= CONST.ENTITY_PERMISSIONS.LIMITED) {
             return this.object.show(this._sheetMode, true);
         } else {
             let sharedWith = Object.keys(permissions)
                 .map(id => id == 'default' ? undefined : game.users.get(id))
-                .filter(user => user && permissions[user.id] >= ENTITY_PERMISSIONS.LIMITED)
+                .filter(user => user && permissions[user.id] >= CONST.ENTITY_PERMISSIONS.LIMITED)
             let buttons = {"show": {"label": "Show to All",
                                     "callback": () => this.object.show(this._sheetMode, true)},
                            "share": {"label": "Share with All",
@@ -80,7 +80,7 @@ class PermissionViewer {
                                          // Need to do a copy of the object, otherwise, the entity itself gets changes
                                          // and the update() doesn't trigger any update on the server.
                                          permissions = duplicate(permissions);
-                                         permissions["default"] = ENTITY_PERMISSIONS.LIMITED;
+                                         permissions["default"] = CONST.ENTITY_PERMISSIONS.LIMITED;
                                          // Can't use "permission.default" otherwise it doesn't trigger a journal
                                          // directory re-render
                                          this.object.update({permission: permissions})
