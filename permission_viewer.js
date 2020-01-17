@@ -5,7 +5,6 @@ class PermissionViewer {
         for (let li of html.find("li.directory-item.entity")) {
             li = $(li)
             let entity = collection.get(li.attr("data-entity-id"))
-            let max_width = 0;
             let users = []
             for (let id in entity.data.permission) {
                 let permission = entity.data.permission[id]
@@ -20,36 +19,27 @@ class PermissionViewer {
                         }
                     }
                     let user_div = $('<div></div>')
-                    let width = 8;
-                    let hyp = false;
                     user_div.attr("data-user-id", id)
-                    if (permission == CONST.ENTITY_PERMISSIONS.LIMITED) {
+                    if (permission === CONST.ENTITY_PERMISSIONS.LIMITED) {
                         user_div.addClass("permission-viewer-limited")
-                        hyp = true;
-                    } else if (permission == CONST.ENTITY_PERMISSIONS.OBSERVER) {
+                    } else if (permission === CONST.ENTITY_PERMISSIONS.OBSERVER) {
                         user_div.addClass("permission-viewer-observer")
-                    } else if (permission == CONST.ENTITY_PERMISSIONS.OWNER) {
+                    } else if (permission === CONST.ENTITY_PERMISSIONS.OWNER) {
                         user_div.addClass("permission-viewer-owner")
                     }
                     if (id == "default") {
                         user_div.addClass("permission-viewer-all")
-                        width = 12;
                     } else {
                         user_div.addClass("permission-viewer-user")
                     }
-                    if (hyp)
-                        max_width += Math.ceil(Math.sqrt(2 * width * width)) + 4;
-                    else
-                        max_width += width + 4;
                     user_div.css({'background-color': bg_color})
                     users.push(user_div)
                 }
             }
+            if (users.length === 0) 
+                users.push($('<div><i class="fas fa-share-alt"/></div>'))
             let div = $('<div class="permission-viewer"></div>')
-            div.css("max-width", max_width)
-            for (let user_div of users) {
-                div.append(user_div)
-            }
+            div.append(...users)
             li.append(div)
         }
     }
