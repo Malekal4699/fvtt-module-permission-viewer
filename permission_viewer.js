@@ -47,7 +47,8 @@ class PermissionViewer {
             let li = $(event.currentTarget).closest("li")
             let contextOptions = obj._getEntryContextOptions();
             let permissionOption = contextOptions.find(e => e.name === 'SIDEBAR.Permissions')
-            permissionOption.callback(li)
+            if (permissionOption && li)
+                permissionOption.callback(li)
         })
     }
     static userUpdated(user) {
