@@ -37,11 +37,18 @@ class PermissionViewer {
                 }
             }
             if (users.length === 0) 
-                users.push($('<div><i class="fas fa-share-alt"/></div>'))
-            let div = $('<div class="permission-viewer"></div>')
-            div.append(...users)
+                users.push($('<div><i class="fas fa-share-alt" style="color: white;"/></div>'))
+            let div = $('<div class="permission-viewer"><a href="#"></a></div>')
+            div.find("a").append(...users)
             li.append(div)
         }
+        html.find(".permission-viewer").click(event => {
+            event.stopPropagation();
+            let li = $(event.currentTarget).closest("li")
+            let contextOptions = obj._getEntryContextOptions();
+            let permissionOption = contextOptions.find(e => e.name === 'SIDEBAR.Permissions')
+            permissionOption.callback(li)
+        })
     }
     static userUpdated(user) {
         for (let user_div of $(".permission-viewer-user")) {

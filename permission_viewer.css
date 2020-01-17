@@ -1,6 +1,6 @@
 div.permission-viewer {
-  max-width: 25px;
-  margin: auto;
+  max-width: fit-content;
+  margin: auto 5px;
 }
 
 .permission-viewer-user {
