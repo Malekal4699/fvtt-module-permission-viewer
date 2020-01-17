@@ -77,7 +77,7 @@ class PermissionViewer {
                                          // Need to do a copy of the object, otherwise, the entity itself gets changes
                                          // and the update() doesn't trigger any update on the server.
                                          permissions = duplicate(permissions);
-                                         permissions["default"] = CONST.ENTITY_PERMISSIONS.LIMITED;
+                                         permissions["default"] = CONST.ENTITY_PERMISSIONS.OBSERVER;
                                          // Can't use "permission.default" otherwise it doesn't trigger a journal
                                          // directory re-render
                                          this.object.update({permission: permissions})
@@ -88,14 +88,14 @@ class PermissionViewer {
             let message = "<h3>This Journal Entry is not shared with anyone.</h3>" +
                 "<p>Do you want to share it with all players before showing it,</p>" +
                 "<p>or do you want to show it to all players without sharing it.</p>" +
-                "<p>If you decide to share it, its default permissions will be set as Limited</p>"
+                "<p>If you decide to share it, its default permissions will be set as Observer</p>"
             if (sharedWith.length > 0) {
                 message = "<h3>This Journal Entry is shared with the following players.</h3>" +
                     "<p><strong>" + sharedWith.map(u => u.name).join(", ") + "</strong></p>" +
                     "<p>Do you want to share it with all players before showing it,</p>" +
                     "<p>or do you want to show it to all players without sharing it,</p>" +
                     "<p>or do you want to show it only to the players that it is already shared with?</p>" +
-                    "<p>If you decide to share it, its default permissions will be set as Limited</p>"
+                    "<p>If you decide to share it, its default permissions will be set as Observer</p>"
                 buttons["display"] = {"label": "Show to list",
                                       "callback": () => this.object.show(this._sheetMode, false)}
             }
@@ -109,6 +109,41 @@ class PermissionViewer {
 
     static init() {
         JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
+        game.settings.register("permission_viewer", "migrated", {
+            name: "Migrated permissions from limited to observer",
+            scope: "world",
+            default: 0,
+            type: Number
+        });
+    }
+
+    static ready() {
+        if (game.settings.get("permission_viewer", "migrated") === 0) {
+            new Dialog({"title": "Migrate permissions from Limited to Observer",
+                        "content": "<p>When sharing a journal entry with all players, <strong>Permission Viewer</strong> used to set its default permission to Limited.</p>" +
+                                    "<p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p>" +
+                                    "<p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p>" +
+                                    "<p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
+                        "buttons": {"migrate": {"label": "Migrate permissions",
+                                                "callback": () => {
+                                                    PermissionViewer.migrateLimitedToObserver();
+                                                    game.settings.set("permission_viewer", "migrated", 1);
+                                                }
+                                               },
+                                    "no": {"label": "Don't change permissions",
+                                               "callback": () => {
+                                                    game.settings.set("permission_viewer", "migrated", 1);
+                                                }
+                                            },
+                                    },
+                        "default": "migrate"
+                       }, {width: 600}).render(true)
+        }
+    }
+    static migrateLimitedToObserver() {
+        const updateData = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED)
+                .map(j => {return {_id: j.id, "permission.default": CONST.ENTITY_PERMISSIONS.OBSERVER}})
+        JournalEntry.updateMany(updateData);
     }
 }
 
@@ -118,3 +153,4 @@ Hooks.on('renderActorDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderItemDirectory', PermissionViewer.directoryRendered)
 Hooks.on('updateUser', PermissionViewer.userUpdated)
 Hooks.on('init', PermissionViewer.init)
+Hooks.on('ready', PermissionViewer.ready)
