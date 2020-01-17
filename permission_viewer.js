@@ -1,6 +1,9 @@
 class PermissionViewer {
     static directoryRendered(obj, html, data) {
         if (!game.user.isGM) return;
+        const contextOptions = obj._getEntryContextOptions();
+        const permissionOption = contextOptions.find(e => e.name === 'SIDEBAR.Permissions')
+
         let collection = obj.constructor.collection;
         for (let li of html.find("li.directory-item.entity")) {
             li = $(li)
@@ -36,20 +39,25 @@ class PermissionViewer {
                     users.push(user_div)
                 }
             }
-            if (users.length === 0) 
-                users.push($('<div><i class="fas fa-share-alt" style="color: white;"/></div>'))
-            let div = $('<div class="permission-viewer"><a href="#"></a></div>')
-            div.find("a").append(...users)
+            let div = $('<div class="permission-viewer"></div>')
+            if (permissionOption) {
+                if (users.length === 0) 
+                    users.push($('<div><i class="fas fa-share-alt" style="color: white;"/></div>'))
+                let a = $(`<a href="#"></a>`)
+                div.append(a)
+                a.append(...users)
+            } else {
+                div.append(...users)
+            }
             li.append(div)
         }
-        html.find(".permission-viewer").click(event => {
-            event.stopPropagation();
-            let li = $(event.currentTarget).closest("li")
-            let contextOptions = obj._getEntryContextOptions();
-            let permissionOption = contextOptions.find(e => e.name === 'SIDEBAR.Permissions')
-            if (permissionOption && li)
-                permissionOption.callback(li)
-        })
+        if (permissionOption)
+            html.find(".permission-viewer").click(event => {
+                event.stopPropagation();
+                let li = $(event.currentTarget).closest("li")
+                if (li)
+                    permissionOption.callback(li)
+            })
     }
     static userUpdated(user) {
         for (let user_div of $(".permission-viewer-user")) {
