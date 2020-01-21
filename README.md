@@ -14,7 +14,7 @@ The color of the dots represents the color of the player. In the case of permiss
 ![screenshot](permission_viewer.png)
 
 # Installation
-In the setup page of FVTT, Install the module by entering the following URL : `https://raw.githubusercontent.com/kakaroto/fvtt-module-permission-viewer/master/permission_viewer/module.json`
+In the setup page of FVTT, Install the module by entering the following URL : `https://raw.githubusercontent.com/kakaroto/fvtt-module-permission-viewer/master/module.json`
 As DM go to the `Manage Modules` options menu in your World then enable the `Permission Viewer` module.
 
 # License
