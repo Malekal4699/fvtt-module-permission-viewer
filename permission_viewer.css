@@ -1,5 +1,5 @@
 div.permission-viewer {
-  max-width: fit-content;
+  max-width: max-content;
   margin: auto 5px;
 }
 
