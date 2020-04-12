@@ -152,7 +152,7 @@ class PermissionViewer {
     static migrateLimitedToObserver() {
         const updateData = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED)
                 .map(j => {return {_id: j.id, "permission.default": CONST.ENTITY_PERMISSIONS.OBSERVER}})
-        JournalEntry.updateMany(updateData);
+        JournalEntry.update(updateData);
     }
 }
 

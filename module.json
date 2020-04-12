@@ -2,13 +2,13 @@
     "name": "permission_viewer",
     "title": "Permission Viewer",
     "description": "<p>Quickly see which entities (Journal entries, Actors, etc..) are visible to all players or visible to a specific player.</p><p>Also allows to share journal entries when showing them or show them only to players who have permission to view it.</p>",
-    "version": "0.5.2",
+    "version": "0.6",
     "author": "KaKaRoTo",
     "scripts": ["./permission_viewer.js"],
     "styles": ["./permission_viewer.css"],
     "packs": [],
     "url": "https://github.com/kakaroto/fvtt-module-permission-viewer",
     "manifest": "https://raw.githubusercontent.com/kakaroto/fvtt-module-permission-viewer/master/module.json",
-    "download": "https://github.com/kakaroto/fvtt-module-permission-viewer/archive/v0.5.2.zip",
-    "minimumCoreVersion": "0.4.4"
+    "download": "https://github.com/kakaroto/fvtt-module-permission-viewer/archive/v0.6.zip",
+    "minimumCoreVersion": "0.5.4"
 }
