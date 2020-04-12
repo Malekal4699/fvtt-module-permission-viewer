@@ -9,6 +9,6 @@
     "packs": [],
     "url": "https://github.com/kakaroto/fvtt-module-permission-viewer",
     "manifest": "https://raw.githubusercontent.com/kakaroto/fvtt-module-permission-viewer/master/module.json",
-    "download": "https://github.com/kakaroto/fvtt-module-permission-viewer/archive/master.zip",
+    "download": "https://github.com/kakaroto/fvtt-module-permission-viewer/archive/v0.5.2.zip",
     "minimumCoreVersion": "0.4.4"
 }
