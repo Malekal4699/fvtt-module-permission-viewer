@@ -14,8 +14,9 @@ class PermissionViewer {
                 if (permission >= CONST.ENTITY_PERMISSIONS.LIMITED) {
                     let bg_color = "transparent"
                     if (id != "default") {
-                        let user = game.users.get(id)
+                        const user = game.users.get(id)
                         if (user) {
+                            if (user.isGM) continue;
                             bg_color = user.data.color;
                         } else {
                             continue;
