@@ -129,25 +129,31 @@ class PermissionViewer {
 
     static ready() {
         if (game.settings.get("permission_viewer", "migrated") === 0) {
-            new Dialog({"title": "Migrate permissions from Limited to Observer",
-                        "content": "<p>When sharing a journal entry with all players, <strong>Permission Viewer</strong> used to set its default permission to Limited.</p>" +
-                                    "<p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p>" +
-                                    "<p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p>" +
-                                    "<p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
-                        "buttons": {"migrate": {"label": "Migrate permissions",
-                                                "callback": () => {
-                                                    PermissionViewer.migrateLimitedToObserver();
-                                                    game.settings.set("permission_viewer", "migrated", 1);
-                                                }
-                                               },
-                                    "no": {"label": "Don't change permissions",
-                                               "callback": () => {
-                                                    game.settings.set("permission_viewer", "migrated", 1);
-                                                }
-                                            },
-                                    },
-                        "default": "migrate"
-                       }, {width: 600}).render(true)
+            const limnitedJournals = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED);
+            if (limnitedJournals > 0) {
+                new Dialog({
+                    "title": "Migrate permissions from Limited to Observer",
+                    "content": "<p>When sharing a journal entry with all players, <strong>Permission Viewer</strong> used to set its default permission to Limited.</p>" +
+                                "<p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p>" +
+                                "<p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p>" +
+                                "<p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
+                    "buttons": {"migrate": {"label": "Migrate permissions",
+                                            "callback": () => {
+                                                PermissionViewer.migrateLimitedToObserver();
+                                                game.settings.set("permission_viewer", "migrated", 1);
+                                            }
+                                        },
+                                "no": {"label": "Don't change permissions",
+                                        "callback": () => {
+                                                game.settings.set("permission_viewer", "migrated", 1);
+                                            }
+                                        },
+                                },
+                    "default": "migrate"
+                }, {width: 600}).render(true)
+            } else {
+                game.settings.set("permission_viewer", "migrated", 1);
+            }
         }
     }
     static migrateLimitedToObserver() {
