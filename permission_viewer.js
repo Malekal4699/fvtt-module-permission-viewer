@@ -2,7 +2,7 @@ class PermissionViewer {
     static directoryRendered(obj, html, data) {
         if (!game.user.isGM) return;
         const contextOptions = obj._getEntryContextOptions();
-        const permissionOption = contextOptions.find(e => e.name === 'SIDEBAR.Permissions')
+        const permissionOption = contextOptions.find(e => e.name === 'PERMISSION.Configure')
 
         let collection = obj.constructor.collection;
         for (let li of html.find("li.directory-item.entity")) {
