@@ -54,6 +54,7 @@ class PermissionViewer {
         }
         if (permissionOption)
             html.find(".permission-viewer").click(event => {
+                event.preventDefault();
                 event.stopPropagation();
                 let li = $(event.currentTarget).closest("li")
                 if (li)
