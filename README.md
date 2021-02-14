@@ -11,7 +11,7 @@ It makes it very easy to see at a glance which journal, actor or item is shared 
 The color of the dots represents the color of the player. In the case of permissions shared with `All Players`, the shape will have the Blue/Yellow/Green/Red colors.
 
 
-![screenshot](permission_viewer.png)
+![screenshot](./images/permission_viewer.png)
 
 # Installation
 In the setup page of FVTT, Install the module by entering the following URL : `https://raw.githubusercontent.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/master/module.json`
