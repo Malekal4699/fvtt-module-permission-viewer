@@ -32,6 +32,7 @@ div.permission-viewer {
 }
 
 .permission-viewer-observer {
+    border-radius: 50%;
 }
 
 .permission-viewer-owner {
