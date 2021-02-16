@@ -2,14 +2,16 @@
     "name": "permission_viewer",
     "title": "Permission Viewer",
     "description": "<p>Quickly see which entities (Journal entries, Actors, etc..) are visible to all players or visible to a specific player.</p><p>Also allows to share journal entries when showing them or show them only to players who have permission to view it.</p>",
-    "version": "0.8.2",
-    "author": "KaKaRoTo", 
+    "version": "0.8.3",
+    "author": "KaKaRoTo, Malekal", 
     "scripts": ["./scripts/permission_viewer.js"],
     "styles": ["./styles/permission_viewer.css"],
     "packs": [],
     "url": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer",
     "manifest": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/module.json",
     "download": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/0.8.2/module.zip",
+    "allowBugReporter": true,
+    "bugs": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/issues",
     "minimumCoreVersion": "0.7.4",
     "compatibleCoreVersion": "0.8.0"
 }
