@@ -1,4 +1,7 @@
+CONFIG.debug.hooks=true;
+
 class PermissionViewer {
+
     static directoryRendered(obj, html, data) {
         if (!game.user.isGM) return;
         const contextOptions = obj._getEntryContextOptions();
@@ -162,6 +165,28 @@ class PermissionViewer {
                 .map(j => {return {_id: j.id, "permission.default": CONST.ENTITY_PERMISSIONS.OBSERVER}})
         JournalEntry.update(updateData);
     }
+   
+    static playerListRendered(){
+        console.log("Permission Viewer | Player List");
+        let pvUsers = game.users.entries;
+        let pvIdColor = [];
+        for (let x of pvUsers){
+            let pvMyObject = {};
+            pvMyObject.id = x._id;
+            pvMyObject.color = x.data.color;
+            pvIdColor.push(pvMyObject);
+        }
+        let pvToReplace = "border: 1px solid #000000";
+        let pvReplacee = "border: 1px solid";
+        for (let i = 0; i < document.getElementById("player-list").children.length ; i++ ){
+            let pvString = document.getElementById("player-list").children[i].innerHTML;
+            if (pvString.toString().search("inactive") > 0){
+                pvString = pvString.replace(pvToReplace, (pvReplacee + pvIdColor[i].color));
+                document.getElementById("player-list").children[i].innerHTML = pvString;
+            }
+                
+        }
+    }
 }
 
 Hooks.on('renderJournalDirectory', PermissionViewer.directoryRendered)
@@ -173,3 +198,4 @@ Hooks.on('renderRollTableDirectory', PermissionViewer.directoryRendered)
 Hooks.on('updateUser', PermissionViewer.userUpdated)
 Hooks.on('init', PermissionViewer.init)
 Hooks.on('ready', PermissionViewer.ready)
+Hooks.on('renderPlayerList', PermissionViewer.playerListRendered)
