@@ -3,7 +3,7 @@
     "title": "Permission Viewer",
     "description": "<p>Quickly see which entities (Journal entries, Actors, etc..) are visible to all players or visible to a specific player.</p><p>Also allows to share journal entries when showing them or show them only to players who have permission to view it.</p>",
     "version": "0.8.3",
-    "author": "KaKaRoTo", 
+    "author": "KaKaRoTo, Malekal", 
     "scripts": ["./scripts/permission_viewer.js"],
     "styles": ["./styles/permission_viewer.css"],
     "packs": [],
