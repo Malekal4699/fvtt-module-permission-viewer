@@ -2,7 +2,6 @@ div.permission-viewer {
   max-width: max-content;
   margin: auto 5px;
 }
-
 .permission-viewer-user {
     display: inline-block;
     width: 8px;
@@ -34,7 +33,6 @@ div.permission-viewer {
 .permission-viewer-observer {
     border-radius: 0px;
 }
-
 
 .permission-viewer-owner {
     border-radius: 50%;

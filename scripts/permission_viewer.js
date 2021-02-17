@@ -40,6 +40,7 @@ class PermissionViewer {
                         user_div.addClass("permission-viewer-user")
                     }
                     user_div.css({'background-color': bg_color})
+                    user_div.addClass("pvTooltip");
                     users.push(user_div)
                 }
             }
