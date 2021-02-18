@@ -1,5 +1,7 @@
 # Permission Viewer
 
+
+
 This Foundry VTT module displays colored diamonds/squares/circles to represent the players who have limited/observer/owner permissions on Entities (Actors, Journal entries, Items, etc..).
 
 It makes it very easy to see at a glance which journal, actor or item is shared with your players. The shapes are :
@@ -11,11 +13,15 @@ It makes it very easy to see at a glance which journal, actor or item is shared 
 The color of the dots represents the color of the player. In the case of permissions shared with `All Players`, the shape will have the Blue/Yellow/Green/Red colors.
 
 
-![screenshot](./images/permission_viewer.png)
+![screenshot](./images/new_permissions_viewer.png)
+![screenshot](./images/player-list.png)
 
 # Installation
-In the setup page of FVTT, Install the module by entering the following URL : `https://raw.githubusercontent.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/master/module.json`
+In the setup page of FVTT, Install the module by entering the following URL : `https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/module.json`
 As DM go to the `Manage Modules` options menu in your World then enable the `Permission Viewer` module.
+
+# Changelog
+`https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/CHANGELOG.md`
 
 # License
 This Foundry VTT module, writen by KaKaRoTo, is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
