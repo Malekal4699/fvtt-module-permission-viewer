@@ -13,5 +13,6 @@
     "allowBugReporter": true,
     "bugs": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/issues",
     "minimumCoreVersion": "0.7.4",
-    "compatibleCoreVersion": "0.7.9"
+    "compatibleCoreVersion": "0.7.9",
+    "changelog" : "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/CHANGELOG.md"
 }
