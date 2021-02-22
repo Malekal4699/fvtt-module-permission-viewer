@@ -1,5 +1,3 @@
-//CONFIG.debug.hooks=true;
-
 class PermissionViewer {
 
     static directoryRendered(obj, html, data) {

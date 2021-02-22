@@ -2,6 +2,10 @@ CHANGELOG
 ===================================
 
 -----
+0.8.4.1
+-----
+- Removed debug string from code.
+-----
 0.8.4
 -----
 - Added override to bottom-left player list. Now, offline users retain their color but the center is darkened.
