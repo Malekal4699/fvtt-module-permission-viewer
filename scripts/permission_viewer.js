@@ -1,4 +1,4 @@
-CONFIG.debug.hooks=true;
+//CONFIG.debug.hooks=true;
 
 class PermissionViewer {
 
