@@ -167,11 +167,11 @@ class PermissionViewer {
    
     static playerListRendered(){
         console.log("Permission Viewer | Player List");
-        let pvUsers = game.users.entries;
+        let pvUsers = game.users.content;
         let pvIdColor = [];
         for (let x of pvUsers){
             let pvMyObject = {};
-            pvMyObject.id = x._id;
+            pvMyObject.id = x.id;
             pvMyObject.color = x.data.color;
             pvIdColor.push(pvMyObject);
         }
