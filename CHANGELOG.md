@@ -2,6 +2,18 @@ CHANGELOG
 ===================================
 
 -----
+0.8.7
+-----
+- Source fix to point to current release download in modules.json
+-----
+
+-----
+0.8.6
+-----
+- FVTT 0.8.6 Stable Release
+-----
+
+-----
 0.8.4.1
 -----
 - Removed debug string from code.
