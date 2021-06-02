@@ -5,6 +5,7 @@
   "author": "KaKaRoTo, Malekal",
   "authors": [],
   "url": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer",
+  "allowBugReporter": true,
   "bugs": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/issues",
   "changelog": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/CHANGELOG.md",
   "flags": {},
