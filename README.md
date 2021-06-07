@@ -1,3 +1,5 @@
+![Package Title](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FLeague-of-Foundry-Developers%2Fleague-repo-status%2Fshields-endpoint%2Fpackage-name.json)
+
 # Permission Viewer
 
 
