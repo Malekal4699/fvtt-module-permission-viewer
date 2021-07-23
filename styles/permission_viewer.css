@@ -1,16 +1,16 @@
 div.permission-viewer {
   max-width: max-content;
   margin: auto 5px;
+  line-height: unset;
 }
+
 .permission-viewer-user {
-    display: inline-block;
     width: 8px;
     height: 8px;
     margin: auto 2px auto 2px;
 }
 
 .permission-viewer-all {
-    display: inline-block;
     width: 0px;
     height: 0px;
     margin: auto 2px auto 2px;
