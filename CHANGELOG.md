@@ -1,6 +1,12 @@
 CHANGELOG
 ===================================
 
+0.8.9
+-----
+- additionnal change to css to return icons on the same line.
+
+Known Issue: icons are not centered.
+
 -----
 0.8.8
 -----
