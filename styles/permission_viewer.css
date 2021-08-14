@@ -1,18 +1,20 @@
 div.permission-viewer {
   max-width: max-content;
   margin: auto 5px;
-  line-height: unset;
+  line-height: initial;
+  display: block ruby;
 }
 
 .permission-viewer-user {
     width: 8px;
     height: 8px;
-    margin: auto 2px auto 2px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 .permission-viewer-all {
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     margin: auto 2px auto 2px;
     border-bottom: 6px solid red;
     border-top: 6px solid green;
@@ -31,7 +33,7 @@ div.permission-viewer {
 }
 
 .permission-viewer-observer {
-    border-radius: 0%;
+    border-radius: 0;
 }
 
 .permission-viewer-owner {
