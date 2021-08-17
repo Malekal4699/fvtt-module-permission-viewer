@@ -1,6 +1,13 @@
 CHANGELOG
 ===================================
 
+0.8.10
+-----
+Rollback to 0.8.7 code, until bugs are fixed.
+
+Known Issue: display issue with smol-foundry module when changing size to be lower than the default.
+
+
 -----
 0.8.7
 -----
