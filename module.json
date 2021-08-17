@@ -9,7 +9,7 @@
   "bugs": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/issues",
   "changelog": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/CHANGELOG.md",
   "flags": {},
-  "version": "0.8.10",
+  "version": "0.8.10" ,
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.6",
   "scripts": [
