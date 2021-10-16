@@ -1,6 +1,10 @@
 CHANGELOG
 ===================================
 
+0.9.0
+----
+Script upgraded to work with Foundry 0.9.x
+
 0.8.10
 -----
 Rollback to 0.8.7 code, until bugs are fixed. 
