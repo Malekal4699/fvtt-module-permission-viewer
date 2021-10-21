@@ -1,0 +1,17 @@
+{
+	"PERMISSIONVIEWER.ShowJournal": "Show Journal Entry to Players",
+	
+	"PERMISSIONVIEWER.NotShared1": "<h3>This Journal Entry is not shared with anyone.</h3>",
+	"PERMISSIONVIEWER.NotShared2": "<p>Do you want to share it with all players before showing it,</p>",
+	"PERMISSIONVIEWER.NotShared3": "<p>or do you want to show it to all players without sharing it.</p>",
+	"PERMISSIONVIEWER.NotShared4": "<p>If you decide to share it, its default permissions will be set as Observer</p>",
+	
+	"PERMISSIONVIEWER.SharedWith1": "<h3>This Journal Entry is shared with the following players.</h3>",
+  "PERMISSIONVIEWER.SharedWith2": "<p>or do you want to show it only to the players that it is already shared with?</p>",
+	
+  "PERMISSIONVIEWER.ShowAll": "Show to All",
+  "PERMISSIONVIEWER.ShareAll": "Share with All",
+  "PERMISSIONVIEWER.ShowList": "Show to list"
+}
+
+

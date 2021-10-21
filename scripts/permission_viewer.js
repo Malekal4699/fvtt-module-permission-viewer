@@ -83,9 +83,9 @@ class PermissionViewer {
             let sharedWith = Object.keys(permissions)
                 .map(id => id == 'default' ? undefined : game.users.get(id))
                 .filter(user => user && permissions[user.id] >= CONST.ENTITY_PERMISSIONS.LIMITED)
-            let buttons = {"show": {"label": "Show to All",
+            let buttons = {"show": {"label": game.i18n.localize("PERMISSIONVIEWER.ShowAll"),
                                     "callback": () => this.object.show(this._sheetMode, true)},
-                           "share": {"label": "Share with All",
+                           "share": {"label": game.i18n.localize("PERMISSIONVIEWER.ShareAll"),
                                      "callback": () => {
                                          // Need to do a copy of the object, otherwise, the entity itself gets changes
                                          // and the update() doesn't trigger any update on the server.
@@ -98,21 +98,21 @@ class PermissionViewer {
                                      }
                                     }
                           }
-            let message = "<h3>This Journal Entry is not shared with anyone.</h3>" +
-                "<p>Do you want to share it with all players before showing it,</p>" +
-                "<p>or do you want to show it to all players without sharing it.</p>" +
-                "<p>If you decide to share it, its default permissions will be set as Observer</p>"
+            let message = game.i18n.localize("PERMISSIONVIEWER.NotShared1") +
+                game.i18n.localize("PERMISSIONVIEWER.NotShared2") +
+                game.i18n.localize("PERMISSIONVIEWER.NotShared3") +
+                game.i18n.localize("PERMISSIONVIEWER.NotShared4")
             if (sharedWith.length > 0) {
-                message = "<h3>This Journal Entry is shared with the following players.</h3>" +
+                message = game.i18n.localize("PERMISSIONVIEWER.SharedWith1") +
                     "<p><strong>" + sharedWith.map(u => u.name).join(", ") + "</strong></p>" +
-                    "<p>Do you want to share it with all players before showing it,</p>" +
-                    "<p>or do you want to show it to all players without sharing it,</p>" +
-                    "<p>or do you want to show it only to the players that it is already shared with?</p>" +
-                    "<p>If you decide to share it, its default permissions will be set as Observer</p>"
-                buttons["display"] = {"label": "Show to list",
+                    game.i18n.localize("PERMISSIONVIEWER.NotShared2") +
+                    game.i18n.localize("PERMISSIONVIEWER.NotShared3") +
+                    game.i18n.localize("PERMISSIONVIEWER.SharedWith2") +
+                    game.i18n.localize("PERMISSIONVIEWER.NotShared4")
+                buttons["display"] = {"label": game.i18n.localize("PERMISSIONVIEWER.ShowList"),
                                       "callback": () => this.object.show(this._sheetMode, false)}
             }
-            new Dialog({"title": "Show Journal Entry to Players",
+            new Dialog({"title": game.i18n.localize("PERMISSIONVIEWER.ShowJournal"),
                         "content": message,
                         "buttons": buttons,
                         "default": "show"
