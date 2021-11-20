@@ -15,10 +15,10 @@
   "PERMISSIONVIEWER.ShowAll": "Mostrar a todos",
   "PERMISSIONVIEWER.ShareAll": "Compartir con todos",
   "PERMISSIONVIEWER.ShowList": "Mostrar a lista",
-  "PERMISSIONVIEWER.SettingName": "Migrated permissions from limited to observer",
+  "PERMISSIONVIEWER.SettingName": "Permisos migrados de Limitado a Espectador",
   
-  "PERMISSIONVIEWER.MigrationDialogTitle": "Migrate permissions from Limited to Observer",
-  "PERMISSIONVIEWER.MigrationDialogContent": "<p>When sharing a journal entry with all players,<strong>Permission viewer</strong> used to set its default permission to Limited.</p> <p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p><p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p><p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
-  "PERMISSIONVIEWER.MigrationDialogLabel1": "Migrate permissions",
-  "PERMISSIONVIEWER.MigrationDialogLabel2": "Don't change permissions"
+  "PERMISSIONVIEWER.MigrationDialogTitle": "Migrar permisos de Limitado a Espectador",
+  "PERMISSIONVIEWER.MigrationDialogContent": "<p>Cuando se compartía una entrada en el diario con todos los jugadores,<strong>Permission viewer</strong> cambiaba los permisos por defecto a Limitado.</p> <p>Sin embargo, desde FVTT 0.4.2 este tipo ya no permite que la entrada esté disponible para los jugadores</p><p>¿Quiere migrar y cambiar los permisos por defecto de todas las entradas de <strong>Limitado a Espectador</strong>?</p><p>Si usa permisos Limitados a propósito (para mostrar notas en una escena que no se puedan abrir, por ejemplo), entonces no realice la migración. En cualquier otro caso, debería migrar.</p>",
+  "PERMISSIONVIEWER.MigrationDialogLabel1": "Migrar permisos",
+  "PERMISSIONVIEWER.MigrationDialogLabel2": "No cambiar los permisos"
 }
