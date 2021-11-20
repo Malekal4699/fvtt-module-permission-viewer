@@ -5,6 +5,10 @@ div.permission-viewer {
   display: block ruby;
 }
 
+div.permission-viewer > a {
+    display:inline-flex;
+}
+
 .permission-viewer-user {
     width: 8px;
     height: 8px;
