@@ -123,7 +123,7 @@ class PermissionViewer {
     static init() {
         JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
         game.settings.register("permission_viewer", "migrated", {
-            name: "Migrated permissions from limited to observer",
+            name: game.i18n.localize("PERMISSIONVIEWER.SettingName"),
             scope: "world",
             default: 0,
             type: Number
@@ -135,18 +135,15 @@ class PermissionViewer {
             const limnitedJournals = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED);
             if (limnitedJournals > 0) {
                 new Dialog({
-                    "title": "Migrate permissions from Limited to Observer",
-                    "content": "<p>When sharing a journal entry with all players, <strong>Permission Viewer</strong> used to set its default permission to Limited.</p>" +
-                                "<p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p>" +
-                                "<p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p>" +
-                                "<p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
-                    "buttons": {"migrate": {"label": "Migrate permissions",
+                    "title": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogTitle"),
+                    "content": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogTitle"),
+                    "buttons": {"migrate": {"label": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogLabel1"),
                                             "callback": () => {
                                                 PermissionViewer.migrateLimitedToObserver();
                                                 game.settings.set("permission_viewer", "migrated", 1);
                                             }
                                         },
-                                "no": {"label": "Don't change permissions",
+                                "no": {"label": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogLabel2"),
                                         "callback": () => {
                                                 game.settings.set("permission_viewer", "migrated", 1);
                                             }

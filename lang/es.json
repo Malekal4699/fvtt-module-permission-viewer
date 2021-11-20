@@ -14,5 +14,11 @@
 
   "PERMISSIONVIEWER.ShowAll": "Mostrar a todos",
   "PERMISSIONVIEWER.ShareAll": "Compartir con todos",
-  "PERMISSIONVIEWER.ShowList": "Mostrar a lista"
+  "PERMISSIONVIEWER.ShowList": "Mostrar a lista",
+  "PERMISSIONVIEWER.SettingName": "Migrated permissions from limited to observer",
+  
+  "PERMISSIONVIEWER.MigrationDialogTitle": "Migrate permissions from Limited to Observer",
+  "PERMISSIONVIEWER.MigrationDialogContent": "<p>When sharing a journal entry with all players,<strong>Permission viewer</strong> used to set its default permission to Limited.</p> <p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p><p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p><p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
+  "PERMISSIONVIEWER.MigrationDialogLabel1": "Migrate permissions",
+  "PERMISSIONVIEWER.MigrationDialogLabel2": "Don't change permissions"
 }
