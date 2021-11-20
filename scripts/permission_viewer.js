@@ -77,9 +77,9 @@ class PermissionViewer {
         await this.submit();
         let permissions = this.object.data.permission;
         let default_permission = permissions.default || CONST.ENTITY_PERMISSIONS.NONE;
-        if (default_permission >= CONST.ENTITY_PERMISSIONS.LIMITED) {
-            return this.object.show(this._sheetMode, true);
-        } else {
+        // if (default_permission >= CONST.ENTITY_PERMISSIONS.LIMITED) {
+        //     return this.object.show(this._sheetMode, true);
+        // } else {
             let sharedWith = Object.keys(permissions)
                 .map(id => id == 'default' ? undefined : game.users.get(id))
                 .filter(user => user && permissions[user.id] >= CONST.ENTITY_PERMISSIONS.LIMITED)
@@ -118,7 +118,7 @@ class PermissionViewer {
                         "default": "show"
                        }).render(true)
         }
-    }
+    //}
 
     static init() {
         JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
