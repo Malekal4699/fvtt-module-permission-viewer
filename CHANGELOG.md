@@ -1,6 +1,12 @@
 CHANGELOG
 ===================================
 
+0.8.12
+-----
+- Fixed missing lang directory.
+- Merged in German translation.
+
+-----
 0.8.11
 -----
 - Spanish Locale in Journal permission dialogs. (Thanks to <a href="https://github.com/lozalojo">Lozalojo</a>)
