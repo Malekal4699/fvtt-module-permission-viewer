@@ -8,7 +8,7 @@
   "bugs": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/issues",
   "changelog": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/CHANGELOG.md",
   "flags": {},
-  "version": "0.8.12" ,
+  "version": "0.8.13" ,
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.9",
   "scripts": [
@@ -33,6 +33,11 @@
       "lang": "de",
       "name": "Deutsch",
       "path": "lang/de.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Francais",
+      "path": "lang/fr.json"
     }
   ],
   "packs": [],
@@ -41,6 +46,6 @@
   "socket": false,
   "url": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer",
   "manifest": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/module.json",
-  "download": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/download/0.8.12/module.zip",
+  "download": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/download/0.8.13/module.zip",
   "protected": false
 }
