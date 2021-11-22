@@ -1,6 +1,12 @@
 CHANGELOG
 ===================================
 
+
+- issue9: Feature Request: 
+    Configuration Settings now have a Permission Viewer section! 
+    The option, if checked, will prompt the GM the same dialog for Default: Limited share to player options.
+    Unchecked, the entry is automatically only shown to the players.
+
 0.8.11
 -----
 - Spanish Locale in Journal permission dialogs. (Thanks to <a href="https://github.com/lozalojo">Lozalojo</a>)

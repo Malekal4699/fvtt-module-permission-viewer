@@ -77,9 +77,9 @@ class PermissionViewer {
         await this.submit();
         let permissions = this.object.data.permission;
         let default_permission = permissions.default || CONST.ENTITY_PERMISSIONS.NONE;
-        // if (default_permission >= CONST.ENTITY_PERMISSIONS.LIMITED) {
-        //     return this.object.show(this._sheetMode, true);
-        // } else {
+        if (default_permission >= CONST.ENTITY_PERMISSIONS.LIMITED && !game.settings.get("permission_viewer","limitedPrompt")) {
+            return this.object.show(this._sheetMode, true);
+        } else {
             let sharedWith = Object.keys(permissions)
                 .map(id => id == 'default' ? undefined : game.users.get(id))
                 .filter(user => user && permissions[user.id] >= CONST.ENTITY_PERMISSIONS.LIMITED)
@@ -118,7 +118,7 @@ class PermissionViewer {
                         "default": "show"
                        }).render(true)
         }
-    //}
+    }
 
     static init() {
         JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
@@ -128,8 +128,25 @@ class PermissionViewer {
             default: 0,
             type: Number
         });
+        game.settings.register("permission_viewer", "limitedPrompt", {
+            name: "Limited Permission Dialog",
+            hint: "If checked, limited permission will prompt option dialog.",
+            scope: "client",
+            config: true,
+            default: false,
+            type: Boolean,
+            onChange: value => console.log(value)
+        });
+        game.settings.registerMenu("permission_viewer", "limitedPrompt", {
+            name: "Limited Permission Dialog",
+            label: "Permission Viewer Options",
+            hint: "Permission Viewer Options",
+            icon: "fas fa-bars",
+            type: MySubmenuApplicationClass,
+            restricted: true,
+        });
     }
-
+    
     static ready() {
         if (game.settings.get("permission_viewer", "migrated") === 0) {
             const limnitedJournals = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED);
@@ -158,6 +175,7 @@ class PermissionViewer {
                 game.settings.set("permission_viewer", "migrated", 1);
             }
         }
+
     }
     static migrateLimitedToObserver() {
         const updateData = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED)
