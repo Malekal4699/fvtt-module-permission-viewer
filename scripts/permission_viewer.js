@@ -135,15 +135,14 @@ class PermissionViewer {
             config: true,
             default: false,
             type: Boolean,
-            onChange: value => console.log(value)
+            onChange: value => console.debug(value)
         });
         game.settings.registerMenu("permission_viewer", "limitedPrompt", {
             name: "Limited Permission Dialog",
             label: "Permission Viewer Options",
             hint: "Permission Viewer Options",
             icon: "fas fa-bars",
-            type: MySubmenuApplicationClass,
-            restricted: true,
+            restricted: true
         });
     }
     
