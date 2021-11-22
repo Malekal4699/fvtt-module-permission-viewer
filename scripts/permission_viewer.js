@@ -71,7 +71,6 @@ class PermissionViewer {
             }
         }
     }
-
     async _onShowPlayers(event) {
         event.preventDefault();
         await this.submit();
@@ -119,7 +118,6 @@ class PermissionViewer {
                        }).render(true)
         }
     }
-
     static init() {
         JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
         game.settings.register("permission_viewer", "migrated", {
@@ -145,7 +143,6 @@ class PermissionViewer {
             restricted: true
         });
     }
-    
     static ready() {
         if (game.settings.get("permission_viewer", "migrated") === 0) {
             const limnitedJournals = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED);
@@ -178,7 +175,6 @@ class PermissionViewer {
                 .map(j => {return {_id: j.id, "permission.default": CONST.ENTITY_PERMISSIONS.OBSERVER}})
         JournalEntry.update(updateData);
     }
-   
     static playerListRendered(){
         console.log("Permission Viewer | Player List");
         let pvUsers = game.users.contents;
