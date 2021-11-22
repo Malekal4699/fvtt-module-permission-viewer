@@ -4,11 +4,11 @@ CHANGELOG
 0.8.13
 -----
 - Added French localization.
-- - issue9: Feature Request: 
+- issue9: Feature Request: 
     Configuration Settings now have a Permission Viewer section! 
     The option, if checked, will prompt the GM the same dialog for Default: Limited share to player options.
     Unchecked, the entry is automatically only shown to the players.
-    
+
 -----
 0.8.12
 -----
