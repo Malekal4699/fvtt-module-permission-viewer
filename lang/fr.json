@@ -1,0 +1,21 @@
+{
+  "PERMISSIONVIEWER.ShowJournal": "Montrer cette entrée aux joueurs.",
+	
+  "PERMISSIONVIEWER.NotShared1": "<h3>Cette entrée n'est pas partagée.</h3>",
+  "PERMISSIONVIEWER.NotShared2": "<p>Voulez-vous la partager avec tous les joueurs avant de la montrer, ",
+  "PERMISSIONVIEWER.NotShared3": "ou voulez-vous la montrer à tous les joueurs sans la partager? ",
+  "PERMISSIONVIEWER.NotShared4": "<p>Si vous décidez de la partager, sa permission par défaut sera mis à Observateur.</p>",
+	
+  "PERMISSIONVIEWER.SharedWith1": "<h3>Cette entrée est partagée avec les joueurs suivants:</h3>",
+  "PERMISSIONVIEWER.SharedWith2": "ou voulez-vous la montrer seulement avec les joueurs qui y ont déjà accès?</p>",
+	
+  "PERMISSIONVIEWER.ShowAll": "Montrer à Tous",
+  "PERMISSIONVIEWER.ShareAll": "Partager à Tous",
+  "PERMISSIONVIEWER.ShowList": "Montrer à la Liste",
+  "PERMISSIONVIEWER.SettingName": "Permissions migrée de Limitée à Observateur",
+  
+  "PERMISSIONVIEWER.MigrationDialogTitle": "Migrer les permissions de Limitée à Observateur",
+  "PERMISSIONVIEWER.MigrationDialogContent": "<p>Dans les versions antérieures, quand vous partagiez une entrée avec tous les joueurs,<strong>Permission viewer</strong> assignait la permission par défaut à Limitée. Parcontre, cette permission ne rend pas l'entrée disponible aux joueurs depuis FVTT 0.4.2.</p>Desirez vous migrer les permissions et changer la permission par défaut de toutes les entrées de <strong>Limitée à Observateur</strong>? Si vous utiliser Limitée Intentionnelement (pour montrer des notes de scenes qui ne peuvent etre ouverte), alors ne migrer pas, sinon, vous devriez faire la migration.</p>",
+  "PERMISSIONVIEWER.MigrationDialogLabel1": "Migrer",
+  "PERMISSIONVIEWER.MigrationDialogLabel2": "Ne pas migrer"
+}

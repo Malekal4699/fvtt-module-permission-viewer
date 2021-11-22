@@ -14,5 +14,11 @@
 
   "PERMISSIONVIEWER.ShowAll": "Mostrar a todos",
   "PERMISSIONVIEWER.ShareAll": "Compartir con todos",
-  "PERMISSIONVIEWER.ShowList": "Mostrar a lista"
+  "PERMISSIONVIEWER.ShowList": "Mostrar a lista",
+  "PERMISSIONVIEWER.SettingName": "Permisos migrados de Limitado a Espectador",
+  
+  "PERMISSIONVIEWER.MigrationDialogTitle": "Migrar permisos de Limitado a Espectador",
+  "PERMISSIONVIEWER.MigrationDialogContent": "<p>Cuando se compartía una entrada en el diario con todos los jugadores,<strong>Permission viewer</strong> cambiaba los permisos por defecto a Limitado.</p> <p>Sin embargo, desde FVTT 0.4.2 este tipo ya no permite que la entrada esté disponible para los jugadores</p><p>¿Quiere migrar y cambiar los permisos por defecto de todas las entradas de <strong>Limitado a Espectador</strong>?</p><p>Si usa permisos Limitados a propósito (para mostrar notas en una escena que no se puedan abrir, por ejemplo), entonces no realice la migración. En cualquier otro caso, debería migrar.</p>",
+  "PERMISSIONVIEWER.MigrationDialogLabel1": "Migrar permisos",
+  "PERMISSIONVIEWER.MigrationDialogLabel2": "No cambiar los permisos"
 }

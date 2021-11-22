@@ -1,18 +1,17 @@
 {
-  "PERMISSIONVIEWER.ShowJournal": "Show Journal Entry to Players",
+  "PERMISSIONVIEWER.ShowJournal": "Journal Spielern zeigen",
 	
-  "PERMISSIONVIEWER.NotShared1": "<h3>This Journal Entry is not shared with anyone.</h3>",
-  "PERMISSIONVIEWER.NotShared2": "<p>Do you want to share it with all players before showing it,</p>",
-  "PERMISSIONVIEWER.NotShared3": "<p>or do you want to show it to all players without sharing it.</p>",
-  "PERMISSIONVIEWER.NotShared4": "<p>If you decide to share it, its default permissions will be set as Observer</p>",
+  "PERMISSIONVIEWER.NotShared1": "<h3>Dieses Journal ist noch mit niemandem geteilt.</h3>",
+  "PERMISSIONVIEWER.NotShared2": "<p>Soll das Journal<ul><li>allen Spielern gezeigt werden ohne es vorher zu teilen?</li>",
+  "PERMISSIONVIEWER.NotShared3": "<li>mit allen Spielern geteilt und dann gezeigt werden?</li>",
+  "PERMISSIONVIEWER.NotShared4": "</ul></p><p>Standard Zugriff für dieses Journal wird dann \"Beobachter\" sein</p>",
 	
-  "PERMISSIONVIEWER.SharedWith1": "<h3>This Journal Entry is shared with the following players.</h3>",
-  "PERMISSIONVIEWER.SharedWith2": "<p>or do you want to show it only to the players that it is already shared with?</p>",
+  "PERMISSIONVIEWER.SharedWith1": "<h3>Dieses Journal ist mit den folgenden Spielern geteilt:</h3>",
+  "PERMISSIONVIEWER.SharedWith2": "<li>nur den Spielern gezeigt werden, mit denen es schon geteilt wurde?</li>",
 	
-  "PERMISSIONVIEWER.ShowAll": "Show to All",
-  "PERMISSIONVIEWER.ShareAll": "Share with All",
-  "PERMISSIONVIEWER.ShowList": "Show to list",
-
+  "PERMISSIONVIEWER.ShowAll": "Allen zeigen",
+  "PERMISSIONVIEWER.ShareAll": "Mit allen teilen",
+  "PERMISSIONVIEWER.ShowList": "Nur Liste zeigen",
   "PERMISSIONVIEWER.SettingName": "Migrated permissions from limited to observer",
   
   "PERMISSIONVIEWER.MigrationDialogTitle": "Migrate permissions from Limited to Observer",
