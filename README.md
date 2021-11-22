@@ -19,6 +19,11 @@ The color of the dots represents the color of the player. In the case of permiss
 In the setup page of FVTT, Install the module by entering the following URL : `https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/module.json`
 As DM go to the `Manage Modules` options menu in your World then enable the `Permission Viewer` module.
 
+# Settings
+New option has been added to toggle the current behavior, preventing the opening of the share to player dialog box when default permission is set to limited.
+
+![image](https://user-images.githubusercontent.com/78604153/142787002-599b2da2-5f11-413b-bc19-525924635c20.png)
+
 # Known Issues
 Module compatibility issues:
 * smol-foundry: resizing Scenes to smaller values will cause PV icons to be offset.
