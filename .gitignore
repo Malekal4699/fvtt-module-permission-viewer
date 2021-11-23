@@ -2,3 +2,4 @@
 permission_viewer.code-workspace
 permission_viewer.lock
 .prettierrc
+foundry.js
