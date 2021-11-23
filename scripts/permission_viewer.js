@@ -1,5 +1,60 @@
 class PermissionViewer {
 
+    static init() {
+        JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
+        game.settings.register("permission_viewer", "migrated", {
+            name: game.i18n.localize("PERMISSIONVIEWER.SettingName"),
+            scope: "world",
+            default: 0,
+            type: Number
+        });
+        game.settings.register("permission_viewer", "limitedPrompt", {
+            name: "Limited Permission Dialog",
+            hint: "If checked, limited permission will prompt option dialog.",
+            scope: "world",
+            config: true,
+            default: false,
+            type: Boolean,
+            onChange: value => console.debug(value)
+        });
+
+        // Code Artifact. Keeping in case I want to add Submenu to the settings.
+        // game.settings.registerMenu("permission_viewer", "limitedPrompt", {
+        //     name: "Limited Permission Dialog",
+        //     label: "Permission Viewer Options",
+        //     hint: "Permission Viewer Options",
+        //     type: MySubmenuApplicationClass,
+        //     icon: "fas fa-bars",
+        //     restricted: true
+        // });
+    }
+    static ready() {
+        if (game.settings.get("permission_viewer", "migrated") === 0) {
+            const limnitedJournals = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED);
+            if (limnitedJournals > 0) {
+                new Dialog({
+                    "title": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogTitle"),
+                    "content": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogTitle"),
+                    "buttons": {"migrate": {"label": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogLabel1"),
+                                            "callback": () => {
+                                                PermissionViewer.migrateLimitedToObserver();
+                                                game.settings.set("permission_viewer", "migrated", 1);
+                                            }
+                                        },
+                                "no": {"label": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogLabel2"),
+                                        "callback": () => {
+                                                game.settings.set("permission_viewer", "migrated", 1);
+                                            }
+                                        },
+                                },
+                    "default": "migrate"
+                }, {width: 600}).render(true)
+            } else {
+                game.settings.set("permission_viewer", "migrated", 1);
+            }
+        }
+
+    }
     static directoryRendered(obj, html, data) {
         if (!game.user.isGM) return;
         const contextOptions = obj._getEntryContextOptions();
@@ -38,7 +93,6 @@ class PermissionViewer {
                         user_div.addClass("permission-viewer-user")
                     }
                     user_div.css({'background-color': bg_color})
-                    user_div.addClass("pvTooltip");
                     users.push(user_div)
                 }
             }
@@ -84,19 +138,19 @@ class PermissionViewer {
                 .filter(user => user && permissions[user.id] >= CONST.ENTITY_PERMISSIONS.LIMITED)
             let buttons = {"show": {"label": game.i18n.localize("PERMISSIONVIEWER.ShowAll"),
                                     "callback": () => this.object.show(this._sheetMode, true)},
-                           "share": {"label": game.i18n.localize("PERMISSIONVIEWER.ShareAll"),
-                                     "callback": () => {
-                                         // Need to do a copy of the object, otherwise, the entity itself gets changes
-                                         // and the update() doesn't trigger any update on the server.
-                                         permissions = duplicate(permissions);
-                                         permissions["default"] = CONST.ENTITY_PERMISSIONS.OBSERVER;
-                                         // Can't use "permission.default" otherwise it doesn't trigger a journal
-                                         // directory re-render
-                                         this.object.update({permission: permissions})
-                                         this.object.show(this._sheetMode, true);
-                                     }
+                            "share": {"label": game.i18n.localize("PERMISSIONVIEWER.ShareAll"),
+                                        "callback": () => {
+                                            // Need to do a copy of the object, otherwise, the entity itself gets changes
+                                            // and the update() doesn't trigger any update on the server.
+                                            permissions = duplicate(permissions);
+                                            permissions["default"] = CONST.ENTITY_PERMISSIONS.OBSERVER;
+                                            // Can't use "permission.default" otherwise it doesn't trigger a journal
+                                            // directory re-render
+                                            this.object.update({permission: permissions})
+                                            this.object.show(this._sheetMode, true);
+                                        }
                                     }
-                          }
+                            }
             let message = game.i18n.localize("PERMISSIONVIEWER.NotShared1") +
                 game.i18n.localize("PERMISSIONVIEWER.NotShared2") +
                 game.i18n.localize("PERMISSIONVIEWER.NotShared3") +
@@ -109,66 +163,14 @@ class PermissionViewer {
                     game.i18n.localize("PERMISSIONVIEWER.SharedWith2") +
                     game.i18n.localize("PERMISSIONVIEWER.NotShared4")
                 buttons["display"] = {"label": game.i18n.localize("PERMISSIONVIEWER.ShowList"),
-                                      "callback": () => this.object.show(this._sheetMode, false)}
+                                        "callback": () => this.object.show(this._sheetMode, false)}
             }
             new Dialog({"title": game.i18n.localize("PERMISSIONVIEWER.ShowJournal"),
                         "content": message,
                         "buttons": buttons,
                         "default": "show"
-                       }).render(true)
+                        }).render(true)
         }
-    }
-    static init() {
-        JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
-        game.settings.register("permission_viewer", "migrated", {
-            name: game.i18n.localize("PERMISSIONVIEWER.SettingName"),
-            scope: "world",
-            default: 0,
-            type: Number
-        });
-        game.settings.register("permission_viewer", "limitedPrompt", {
-            name: "Limited Permission Dialog",
-            hint: "If checked, limited permission will prompt option dialog.",
-            scope: "client",
-            config: true,
-            default: false,
-            type: Boolean,
-            onChange: value => console.debug(value)
-        });
-        game.settings.registerMenu("permission_viewer", "limitedPrompt", {
-            name: "Limited Permission Dialog",
-            label: "Permission Viewer Options",
-            hint: "Permission Viewer Options",
-            icon: "fas fa-bars",
-            restricted: true
-        });
-    }
-    static ready() {
-        if (game.settings.get("permission_viewer", "migrated") === 0) {
-            const limnitedJournals = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED);
-            if (limnitedJournals > 0) {
-                new Dialog({
-                    "title": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogTitle"),
-                    "content": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogTitle"),
-                    "buttons": {"migrate": {"label": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogLabel1"),
-                                            "callback": () => {
-                                                PermissionViewer.migrateLimitedToObserver();
-                                                game.settings.set("permission_viewer", "migrated", 1);
-                                            }
-                                        },
-                                "no": {"label": game.i18n.localize("PERMISSIONVIEWER.MigrationDialogLabel2"),
-                                        "callback": () => {
-                                                game.settings.set("permission_viewer", "migrated", 1);
-                                            }
-                                        },
-                                },
-                    "default": "migrate"
-                }, {width: 600}).render(true)
-            } else {
-                game.settings.set("permission_viewer", "migrated", 1);
-            }
-        }
-
     }
     static migrateLimitedToObserver() {
         const updateData = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED)
@@ -198,6 +200,19 @@ class PermissionViewer {
         }
     }
 }
+
+// class MySubmenuApplicationClass extends FormApplication {
+ 
+//     //Added to squash error in registering Submenu with no type.
+//     // Methods are not currently in use.
+//     // getData() {
+//     //   return game.settings.get('myModuleName', 'myComplexSettingName');
+//     // }
+//     //   _updateObject(event, formData) {
+//     //   const data = expandObject(formData);
+//     //   game.settings.set('myModuleName', 'myComplexSettingName', data);
+//     // }
+// }
 
 Hooks.on('renderJournalDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderSceneDirectory', PermissionViewer.directoryRendered)
