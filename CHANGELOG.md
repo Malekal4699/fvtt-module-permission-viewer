@@ -1,6 +1,12 @@
 CHANGELOG
 ===================================
 
+0.8.14
+-----
+- Setting register fix.
+- Additional Localization strings.
+
+-----
 0.8.13
 -----
 - Added French localization.
