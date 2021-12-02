@@ -1,1 +1,15 @@
 /temp.json
+permission_viewer.code-workspace
+permission_viewer.lock
+.prettierrc
+foundry.js
+.vscode/
+.gitignore
+.vscode/workspace.code-workspace
+launch.json
+package-lock.json
+package.json
+.gitignore
+tsconfig.json
+node_modules/
+workspace.code-workspace

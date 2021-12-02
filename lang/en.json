@@ -1,0 +1,22 @@
+{
+  "PERMISSIONVIEWER.ShowJournal": "Show Journal Entry to Players",
+	
+  "PERMISSIONVIEWER.NotShared1": "<h3>This Journal Entry is not shared with anyone.</h3>",
+  "PERMISSIONVIEWER.NotShared2": "<p>Do you want to share it with all players before showing it,</p>",
+  "PERMISSIONVIEWER.NotShared3": "<p>or do you want to show it to all players without sharing it.</p>",
+  "PERMISSIONVIEWER.NotShared4": "<p>If you decide to share it, its default permissions will be set as Observer</p>",
+	
+  "PERMISSIONVIEWER.SharedWith1": "<h3>This Journal Entry is shared with the following players.</h3>",
+  "PERMISSIONVIEWER.SharedWith2": "<p>or do you want to show it only to the players that it is already shared with?</p>",
+	
+  "PERMISSIONVIEWER.ShowAll": "Show to All",
+  "PERMISSIONVIEWER.ShareAll": "Share with All",
+  "PERMISSIONVIEWER.ShowList": "Show to list",
+
+  "PERMISSIONVIEWER.SettingName": "Migrated permissions from limited to observer",
+  
+  "PERMISSIONVIEWER.MigrationDialogTitle": "Migrate permissions from Limited to Observer",
+  "PERMISSIONVIEWER.MigrationDialogContent": "<p>When sharing a journal entry with all players,<strong>Permission viewer</strong> used to set its default permission to Limited.</p> <p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p><p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p><p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
+  "PERMISSIONVIEWER.MigrationDialogLabel1": "Migrate permissions",
+  "PERMISSIONVIEWER.MigrationDialogLabel2": "Don't change permissions"
+}

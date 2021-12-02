@@ -5,12 +5,39 @@ CHANGELOG
 ----
 Script upgraded to work with Foundry 0.9.x
 
+0.8.14
+-----
+- Setting register fix.
+- Additional Localization strings.
+
+-----
+0.8.13
+-----
+- Added French localization.
+
+- issue9: Feature Request Added: 
+    Configuration Settings now have a Permission Viewer section! 
+    The option, if checked, will prompt the GM the same dialog for Default: Limited share to player options.
+    Unchecked, the entry is automatically only shown to the players.
+
+-----
+0.8.12
+-----
+- Fixed missing lang directory.
+- Merged in German translation (Thanks to <a href="https://github.com/brockhaus">brockhaus</a>)
+
+-----
+0.8.11
+-----
+- Spanish Locale in Journal permission dialogs. (Thanks to <a href="https://github.com/lozalojo">Lozalojo</a>)
+- Fixed CSS so the permission Icons are side by side rather than over/under.
+
+-----
 0.8.10
 -----
-Rollback to 0.8.7 code, until bugs are fixed. 
+- Rollback to 0.8.7 code, until bugs are fixed. 
 
 Known Issue: display issue with smol-foundry module when changing size to be lower than the default.
-
 
 -----
 0.8.7

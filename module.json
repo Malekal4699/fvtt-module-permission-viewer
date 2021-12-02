@@ -4,14 +4,15 @@
   "description": "<p>Quickly see which entities (Journal entries, Actors, etc..) are visible to all players or visible to a specific player.</p><p>Also allows to share journal entries when showing them or show them only to players who have permission to view it.</p>",
   "author": "KaKaRoTo, Malekal",
   "authors": [],
-  "url": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer",
   "allowBugReporter": true,
   "bugs": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/issues",
   "changelog": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/CHANGELOG.md",
   "flags": {},
+
   "version": "0.9.0" ,
   "minimumCoreVersion": 9,
   "compatibleCoreVersion": 9,
+
   "scripts": [
     "./scripts/permission_viewer.js"
   ],
@@ -19,11 +20,33 @@
   "styles": [
     "./styles/permission_viewer.css"
   ],
-  "languages": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Francais",
+      "path": "lang/fr.json"
+    }
+  ],
   "packs": [],
   "system": [],
   "dependencies": [],
   "socket": false,
+  "url": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer",
   "manifest": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/module.json",
   "download": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/download/0.9.0/module.zip",
   "protected": false

@@ -5,11 +5,17 @@ div.permission-viewer {
   display: block ruby;
 }
 
+div.permission-viewer > a {
+    display:inline-flex;
+}
+
+
 .permission-viewer-user {
     width: 8px;
     height: 8px;
     margin-left: 2px;
     margin-right: 2px;
+    margin: auto 2px auto 2px;
 }
 
 .permission-viewer-all {
@@ -21,6 +27,8 @@ div.permission-viewer {
     border-left: 6px solid yellow;
     border-right: 6px solid blue;
 }
+
+
 
 .permission-viewer-limited {
     -webkit-transform-origin:50% 50%;

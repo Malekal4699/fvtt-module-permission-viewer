@@ -1,0 +1,24 @@
+{
+  "I18N.LANGUAGE": "Español",
+  "I18N.MAINTAINERS": "@Viriato139ac#0342",
+
+  "PERMISSIONVIEWER.ShowJournal": "Mostrar entrada del diario a los jugadores",
+	
+  "PERMISSIONVIEWER.NotShared1": "<h3>Esta entrada no está compartida con nadie</h3>",
+  "PERMISSIONVIEWER.NotShared2": "<p>¿Quiere compartirla con todos los jugadores antes de mostrarla,</p>",
+  "PERMISSIONVIEWER.NotShared3": "<p>o mostrarla a los jugadores sin compartirla?</p>",
+  "PERMISSIONVIEWER.NotShared4": "<p>Si decide compartirla, su permiso por defecto se cambiará a Espectador</p>",
+	
+  "PERMISSIONVIEWER.SharedWith1": "<h3>Esta entrada está compartida con:</h3>",
+  "PERMISSIONVIEWER.SharedWith2": "<p>o mostrarla solo a aquellos jugadores con los que la ha compartido previamente?</p>",
+
+  "PERMISSIONVIEWER.ShowAll": "Mostrar a todos",
+  "PERMISSIONVIEWER.ShareAll": "Compartir con todos",
+  "PERMISSIONVIEWER.ShowList": "Mostrar a lista",
+  "PERMISSIONVIEWER.SettingName": "Permisos migrados de Limitado a Espectador",
+  
+  "PERMISSIONVIEWER.MigrationDialogTitle": "Migrar permisos de Limitado a Espectador",
+  "PERMISSIONVIEWER.MigrationDialogContent": "<p>Cuando se compartía una entrada en el diario con todos los jugadores,<strong>Permission viewer</strong> cambiaba los permisos por defecto a Limitado.</p> <p>Sin embargo, desde FVTT 0.4.2 este tipo ya no permite que la entrada esté disponible para los jugadores</p><p>¿Quiere migrar y cambiar los permisos por defecto de todas las entradas de <strong>Limitado a Espectador</strong>?</p><p>Si usa permisos Limitados a propósito (para mostrar notas en una escena que no se puedan abrir, por ejemplo), entonces no realice la migración. En cualquier otro caso, debería migrar.</p>",
+  "PERMISSIONVIEWER.MigrationDialogLabel1": "Migrar permisos",
+  "PERMISSIONVIEWER.MigrationDialogLabel2": "No cambiar los permisos"
+}
