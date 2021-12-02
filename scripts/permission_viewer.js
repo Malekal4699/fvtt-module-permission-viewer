@@ -61,13 +61,13 @@ class PermissionViewer {
         const permissionOption = contextOptions.find(e => e.name === 'PERMISSION.Configure')
 
         let collection = obj.constructor.collection;
-        for (let li of html.find("li.directory-item.entity")) {
+        for (let li of html.find("li.directory-item.document")) {
             li = $(li)
-            let entity = collection.get(li.attr("data-entity-id"))
+            let document = collection.get(li.attr("data-document-id"))
             let users = []
-            for (let id in entity.data.permission) {
-                let permission = entity.data.permission[id]
-                if (permission >= CONST.ENTITY_PERMISSIONS.LIMITED) {
+            for (let id in document.data.permission) {
+                let permission = document.data.permission[id]
+                if (permission >= CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED) {
                     let bg_color = "transparent"
                     if (id != "default") {
                         const user = game.users.get(id)
@@ -80,11 +80,11 @@ class PermissionViewer {
                     }
                     let user_div = $('<div></div>')
                     user_div.attr("data-user-id", id)
-                    if (permission === CONST.ENTITY_PERMISSIONS.LIMITED) {
+                    if (permission === CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED) {
                         user_div.addClass("permission-viewer-limited")
-                    } else if (permission === CONST.ENTITY_PERMISSIONS.OBSERVER) {
+                    } else if (permission === CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER) {
                         user_div.addClass("permission-viewer-observer")
-                    } else if (permission === CONST.ENTITY_PERMISSIONS.OWNER) {
+                    } else if (permission === CONST.DOCUMENT_PERMISSION_LEVELS.OWNER) {
                         user_div.addClass("permission-viewer-owner")
                     }
                     if (id == "default") {
@@ -129,13 +129,15 @@ class PermissionViewer {
         event.preventDefault();
         await this.submit();
         let permissions = this.object.data.permission;
-        let default_permission = permissions.default || CONST.ENTITY_PERMISSIONS.NONE;
-        if (default_permission >= CONST.ENTITY_PERMISSIONS.LIMITED && !game.settings.get("permission_viewer","limitedPrompt")) {
+
+        let default_permission = permissions.default || CONST.DOCUMENT_PERMISSION_LEVELS.NONE;
+        if (default_permission >= CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED && !game.settings.get("permission_viewer","limitedPrompt"))) {
+
             return this.object.show(this._sheetMode, true);
         } else {
             let sharedWith = Object.keys(permissions)
                 .map(id => id == 'default' ? undefined : game.users.get(id))
-                .filter(user => user && permissions[user.id] >= CONST.ENTITY_PERMISSIONS.LIMITED)
+                .filter(user => user && permissions[user.id] >= CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED)
             let buttons = {"show": {"label": game.i18n.localize("PERMISSIONVIEWER.ShowAll"),
                                     "callback": () => this.object.show(this._sheetMode, true)},
                             "share": {"label": game.i18n.localize("PERMISSIONVIEWER.ShareAll"),
@@ -143,14 +145,14 @@ class PermissionViewer {
                                             // Need to do a copy of the object, otherwise, the entity itself gets changes
                                             // and the update() doesn't trigger any update on the server.
                                             permissions = duplicate(permissions);
-                                            permissions["default"] = CONST.ENTITY_PERMISSIONS.OBSERVER;
+                                            permissions["default"] = CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER;
                                             // Can't use "permission.default" otherwise it doesn't trigger a journal
                                             // directory re-render
                                             this.object.update({permission: permissions})
                                             this.object.show(this._sheetMode, true);
                                         }
                                     }
-                            }
+                           }
             let message = game.i18n.localize("PERMISSIONVIEWER.NotShared1") +
                 game.i18n.localize("PERMISSIONVIEWER.NotShared2") +
                 game.i18n.localize("PERMISSIONVIEWER.NotShared3") +
@@ -169,12 +171,52 @@ class PermissionViewer {
                         "content": message,
                         "buttons": buttons,
                         "default": "show"
-                        }).render(true)
+                       }).render(true)
+        }
+    }
+
+    static init() {
+        JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
+        game.settings.register("permission_viewer", "migrated", {
+            name: "Migrated permissions from limited to observer",
+            scope: "world",
+            default: 0,
+            type: Number
+        });
+    }
+
+    static ready() {
+        if (game.settings.get("permission_viewer", "migrated") === 0) {
+            const limnitedJournals = game.journal.contents.filter(j => j.data.permission.default === CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED);
+            if (limnitedJournals > 0) {
+                new Dialog({
+                    "title": "Migrate permissions from Limited to Observer",
+                    "content": "<p>When sharing a journal entry with all players, <strong>Permission Viewer</strong> used to set its default permission to Limited.</p>" +
+                                "<p>However, that permission does not actually make the journal entry available to players since FVTT 0.4.2</p>" +
+                                "<p>Would you like to migrate and change every journal entry's default permission from <strong>Limited to Observer</strong>?</p>" +
+                                "<p>If you use Limited permissions on purpose (to show Notes on a scene that cannot be opened), then don't, otherwise, you should do the migration.</p>",
+                    "buttons": {"migrate": {"label": "Migrate permissions",
+                                            "callback": () => {
+                                                PermissionViewer.migrateLimitedToObserver();
+                                                game.settings.set("permission_viewer", "migrated", 1);
+                                            }
+                                        },
+                                "no": {"label": "Don't change permissions",
+                                        "callback": () => {
+                                                game.settings.set("permission_viewer", "migrated", 1);
+                                            }
+                                        },
+                                },
+                    "default": "migrate"
+                }, {width: 600}).render(true)
+            } else {
+                game.settings.set("permission_viewer", "migrated", 1);
+            }
         }
     }
     static migrateLimitedToObserver() {
-        const updateData = game.journal.entities.filter(j => j.data.permission.default === CONST.ENTITY_PERMISSIONS.LIMITED)
-                .map(j => {return {_id: j.id, "permission.default": CONST.ENTITY_PERMISSIONS.OBSERVER}})
+        const updateData = game.journal.contents.filter(j => j.data.permission.default === CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED)
+                .map(j => {return {_id: j.id, "permission.default": CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER}})
         JournalEntry.update(updateData);
     }
     static playerListRendered(){
@@ -220,6 +262,7 @@ Hooks.on('renderActorDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderItemDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderMacroDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderRollTableDirectory', PermissionViewer.directoryRendered)
+Hooks.on('renderCardsDirectory', PermissionViewer.directoryRendered)
 Hooks.on('updateUser', PermissionViewer.userUpdated)
 Hooks.on('init', PermissionViewer.init)
 Hooks.on('ready', PermissionViewer.ready)

@@ -1,6 +1,10 @@
 CHANGELOG
 ===================================
 
+0.9.0
+----
+Script upgraded to work with Foundry 0.9.x
+
 0.8.14
 -----
 - Setting register fix.
