@@ -131,7 +131,7 @@ class PermissionViewer {
         let permissions = this.object.data.permission;
 
         let default_permission = permissions.default || CONST.DOCUMENT_PERMISSION_LEVELS.NONE;
-        if (default_permission >= CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED && !game.settings.get("permission_viewer","limitedPrompt"))) {
+        if (default_permission >= CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED && !game.settings.get("permission_viewer","limitedPrompt")) {
 
             return this.object.show(this._sheetMode, true);
         } else {
