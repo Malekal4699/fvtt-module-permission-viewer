@@ -5,10 +5,10 @@
   "author": "KaKaRoTo, Malekal",
   "authors": [],
   "allowBugReporter": true,
-  "bugs": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/issues",
-  "changelog": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/CHANGELOG.md",
+  "bugs": "https://github.com/Malekal4699/fvtt-module-permission-viewer/issues",
+  "changelog": "https://github.com/Malekal4699/fvtt-module-permission-viewer/CHANGELOG.md",
   "flags": {},
-  "version": "0.8.14" ,
+  "version": "0.8.14m" ,
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.9",
   "scripts": [
@@ -44,8 +44,8 @@
   "system": [],
   "dependencies": [],
   "socket": false,
-  "url": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer",
-  "manifest": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/module.json",
-  "download": "https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/download/0.8.14/module.zip",
+  "url": "https://github.com/Malekal4699/fvtt-module-permission-viewer",
+  "manifest": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/latest/download/module.json",
+  "download": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/download/0.8.14m/module.zip",
   "protected": false
 }
