@@ -18,15 +18,6 @@ class PermissionViewer {
             onChange: value => console.debug(value)
         });
 
-        // Code Artifact. Keeping in case I want to add Submenu to the settings.
-        // game.settings.registerMenu("permission_viewer", "limitedPrompt", {
-        //     name: "Limited Permission Dialog",
-        //     label: "Permission Viewer Options",
-        //     hint: "Permission Viewer Options",
-        //     type: MySubmenuApplicationClass,
-        //     icon: "fas fa-bars",
-        //     restricted: true
-        // });
     }
     static ready() {
         if (game.settings.get("permission_viewer", "migrated") === 0) {
@@ -175,16 +166,6 @@ class PermissionViewer {
         }
     }
 
-    static init() {
-        JournalSheet.prototype._onShowPlayers = PermissionViewer.prototype._onShowPlayers
-        game.settings.register("permission_viewer", "migrated", {
-            name: "Migrated permissions from limited to observer",
-            scope: "world",
-            default: 0,
-            type: Number
-        });
-    }
-
     static ready() {
         if (game.settings.get("permission_viewer", "migrated") === 0) {
             const limnitedJournals = game.journal.contents.filter(j => j.data.permission.default === CONST.DOCUMENT_PERMISSION_LEVELS.LIMITED);
@@ -242,19 +223,6 @@ class PermissionViewer {
         }
     }
 }
-
-// class MySubmenuApplicationClass extends FormApplication {
- 
-//     //Added to squash error in registering Submenu with no type.
-//     // Methods are not currently in use.
-//     // getData() {
-//     //   return game.settings.get('myModuleName', 'myComplexSettingName');
-//     // }
-//     //   _updateObject(event, formData) {
-//     //   const data = expandObject(formData);
-//     //   game.settings.set('myModuleName', 'myComplexSettingName', data);
-//     // }
-// }
 
 Hooks.on('renderJournalDirectory', PermissionViewer.directoryRendered)
 Hooks.on('renderSceneDirectory', PermissionViewer.directoryRendered)
