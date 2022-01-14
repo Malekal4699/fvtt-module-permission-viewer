@@ -1,9 +1,14 @@
 CHANGELOG
 ===================================
+
+0.9.3
+----
+- Japanese localization added.
+----
 0.9.2
 ----
-Repository Moved.
-Archived previous versions changelog.
+- Repository Moved.
+- Archived previous versions changelog.
 ----
 0.9.1
 ----
