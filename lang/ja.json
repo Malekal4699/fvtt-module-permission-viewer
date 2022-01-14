@@ -1,0 +1,22 @@
+{
+  "PERMISSIONVIEWER.ShowJournal": "資料をプレイヤーに見せる",
+	
+  "PERMISSIONVIEWER.NotShared1": "<h3>この資料は現在だれとも共有されていません。</h3>",
+  "PERMISSIONVIEWER.NotShared2": "<p>表示する前にPLに閲覧権限を付与して共有しますか？</p>",
+  "PERMISSIONVIEWER.NotShared3": "<p>権限を付与せずに一時的に表示しますか？</p>",
+  "PERMISSIONVIEWER.NotShared4": "<p>共有する場合はデフォルトで観察者（Observer）権限で共有されます。</p>",
+	
+  "PERMISSIONVIEWER.SharedWith1": "<h3>この資料は下記のPLと共有されています。</h3>",
+  "PERMISSIONVIEWER.SharedWith2": "<p>それとも、既に閲覧権限を持っているPLにだけに表示しますか？</p>",
+	
+  "PERMISSIONVIEWER.ShowAll": "全員に表示",
+  "PERMISSIONVIEWER.ShareAll": "全員と共有",
+  "PERMISSIONVIEWER.ShowList": "閲覧者に表示",
+
+  "PERMISSIONVIEWER.SettingName": "権限を限定的（Limited）から観察者（Observer）へ移行",
+  
+  "PERMISSIONVIEWER.MigrationDialogTitle": "権限を限定的（Limited）から観察者（Observer）へ移行",
+  "PERMISSIONVIEWER.MigrationDialogContent": "<p>すべてのプレイヤーに資料を共有するとき、<strong>Permission viewer（このModの権限付与のウィンドウ）</strong>は権限を限定的に設定していました。</p> <p>しかしながら、FVTT 0.4.2よりこの権限を持つPLは実際に閲覧することが不可能になりました。</p><p>すべての資料の権限を<strong>限定的から観察者</strong>に変更しますか？</p><p>シーンに名前だけを表示したいけど中身を表示したくないなどの特殊な使用をしていない限りは移行をお勧めします。</p>",
+  "PERMISSIONVIEWER.MigrationDialogLabel1": "権限移行",
+  "PERMISSIONVIEWER.MigrationDialogLabel2": "権限を移行しない"
+}
