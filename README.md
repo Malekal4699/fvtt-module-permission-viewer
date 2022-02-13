@@ -1,5 +1,6 @@
 # Permission Viewer
-![Package Title](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FLeague-of-Foundry-Developers%2Fleague-repo-status%2Fshields-endpoint%2Fpermission_viewer.json)
+* ![](https://img.shields.io/badge/Maintainer-Malekal-green)
+My discord server: https://discord.gg/Ee2cmeRsN3
 
 This Foundry VTT module displays colored diamonds/squares/circles to represent the players who have limited/observer/owner permissions on Entities (Actors, Journal entries, Items, etc..).
 
