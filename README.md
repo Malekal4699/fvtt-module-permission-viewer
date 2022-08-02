@@ -3,9 +3,9 @@
 
 ![](https://img.shields.io/badge/Maintainer-Malekal-green)
 [![](https://img.shields.io/badge/-Discord-blue)](https://discord.gg/Ee2cmeRsN3)
+
 ![](https://img.shields.io/badge/Foundry-v10-informational)
 ![GitHub Latest Version](https://img.shields.io/github/v/release/Malekal4699/fvtt-module-permission-viewer?sort=semver)
-
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpermission_viewer&colorB=4aa94a)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/Malekal4699/fvtt-module-permission-viewer/latest/module.zip)
 
