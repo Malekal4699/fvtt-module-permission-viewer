@@ -1,8 +1,7 @@
 {
-  "name": "permission_viewer",
-  "title": "Permission Viewer",
-  "description": "<p>Quickly see which entities (Journal entries, Actors, etc..) are visible to all players or visible to a specific player.</p><p>Also allows to share journal entries when showing them or show them only to players who have permission to view it.</p>",
-  "author": "Malekal",
+  "id": "ownership-viewer",
+  "title": "Ownership Viewer",
+  "description": "<p>Quickly see which entities (Journal entries, Actors, etc..) are visible to all players or visible to a specific player.",
   "authors": [{
       "name": "Malekal",
       "site": "https://github.com/Malekal4699/fvtt-module-permission-viewer/",
@@ -12,13 +11,15 @@
       }
   ],
   "allowBugReporter": true,
-  "bugs": "hhttps://github.com/Malekal4699/fvtt-module-permission-viewer/issues",
+  "bugs": "https://github.com/Malekal4699/fvtt-module-permission-viewer/issues",
   "changelog": "https://github.com/Malekal4699/fvtt-module-permission-viewer/CHANGELOG.md",
   "flags": {},
 
   "version": "0.9.3" ,
-  "minimumCoreVersion": 9,
-  "compatibleCoreVersion": 9,
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10
+  },
 
   "scripts": [
     "./scripts/permission_viewer.js"
@@ -27,33 +28,7 @@
   "styles": [
     "./styles/permission_viewer.css"
   ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    },
-    {
-      "lang": "es",
-      "name": "Español",
-      "path": "lang/es.json"
-    },
-    {
-      "lang": "de",
-      "name": "Deutsch",
-      "path": "lang/de.json"
-    },
-    {
-      "lang": "fr",
-      "name": "Francais",
-      "path": "lang/fr.json"
-    },
-    {
-      "lang": "ja",
-      "name": "日本語",
-      "path": "lang/ja.json"
-    }
-  ],
+  
   "packs": [],
   "system": [],
   "dependencies": [],
@@ -63,5 +38,9 @@
   "manifest": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/latest/download/module.json",
   "download": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/download/0.9.3/module.zip",
 
-  "protected": false
+  "protected": false,
+
+  "name": "ownership-viewer",
+  "minimumCoreVersion": 10,
+  "compatibleCoreVersion": 10
 }

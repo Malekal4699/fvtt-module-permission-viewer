@@ -1,16 +1,16 @@
-div.permission-viewer {
+div.ownership-viewer {
   max-width: max-content;
   margin: auto 5px;
   line-height: initial;
   display: block ruby;
 }
 
-div.permission-viewer > a {
+div.ownership-viewer > a {
     display:inline-flex;
 }
 
 
-.permission-viewer-user {
+.ownership-viewer-user {
     width: 8px;
     height: 8px;
     margin-left: 2px;
@@ -18,7 +18,7 @@ div.permission-viewer > a {
     margin: auto 2px auto 2px;
 }
 
-.permission-viewer-all {
+.ownership-viewer-all {
     width: 0;
     height: 0;
     margin: auto 2px auto 2px;
@@ -30,7 +30,7 @@ div.permission-viewer > a {
 
 
 
-.permission-viewer-limited {
+.ownership-viewer-limited {
     -webkit-transform-origin:50% 50%;
     -ms-transform-origin:50% 50%;
     transform-origin:50% 50%;
@@ -40,10 +40,10 @@ div.permission-viewer > a {
     transform: rotate(45deg);
 }
 
-.permission-viewer-observer {
+.ownership-viewer-observer {
     border-radius: 0;
 }
 
-.permission-viewer-owner {
+.ownership-viewer-owner {
     border-radius: 50%;
 }
