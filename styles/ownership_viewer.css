@@ -11,8 +11,8 @@ div.ownership-viewer > a {
 
 
 .ownership-viewer-user {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     margin-left: 2px;
     margin-right: 2px;
     margin: auto 2px auto 2px;
@@ -22,10 +22,10 @@ div.ownership-viewer > a {
     width: 0;
     height: 0;
     margin: auto 2px auto 2px;
-    border-bottom: 6px solid red;
-    border-top: 6px solid green;
-    border-left: 6px solid yellow;
-    border-right: 6px solid blue;
+    border-bottom: 7px solid red;
+    border-top: 7px solid green;
+    border-left: 7px solid yellow;
+    border-right: 7px solid blue;
 }
 
 

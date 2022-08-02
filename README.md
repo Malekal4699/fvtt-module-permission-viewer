@@ -1,6 +1,12 @@
-# Permission Viewer
-* ![](https://img.shields.io/badge/Maintainer-Malekal-green)
-My discord server: https://discord.gg/Ee2cmeRsN3
+# Ownership Viewer
+(Formerly known as 'Permission Viewer')
+![](https://img.shields.io/badge/Foundry-v10-informational)
+![GitHub Latest Version](https://img.shields.io/github/v/release/Malekal4699/fvtt-module-permission-viewer?sort=semver)
+![](https://img.shields.io/badge/Maintainer-Malekal-green)
+[![](https://img.shields.io/badge/-Discord-blue)](https://discord.gg/Ee2cmeRsN3)
+
+![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpermission_viewer&colorB=4aa94a)
+![Latest Release Download Count](https://img.shields.io/github/downloads/Malekal4699/fvtt-module-permission-viewer/latest/module.zip)
 
 This Foundry VTT module displays colored diamonds/squares/circles to represent the players who have limited/observer/owner permissions on Entities (Actors, Journal entries, Items, etc..).
 
@@ -15,15 +21,6 @@ The color of the dots represents the color of the player. In the case of permiss
 
 ![screenshot](./images/new_permissions_viewer.png)
 ![screenshot](./images/player-list.png)
-
-# Installation
-In the setup page of FVTT, Install the module by entering the following URL : `https://github.com/League-of-Foundry-Developers/fvtt-module-permission-viewer/releases/latest/download/module.json`
-As DM go to the `Manage Modules` options menu in your World then enable the `Permission Viewer` module.
-
-# Settings
-New option has been added to toggle the current behavior, preventing the opening of the share to player dialog box when default permission is set to limited.
-
-![image](https://user-images.githubusercontent.com/78604153/142787002-599b2da2-5f11-413b-bc19-525924635c20.png)
 
 # Known Issues
 Module compatibility issues:
