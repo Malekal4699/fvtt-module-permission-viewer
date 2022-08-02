@@ -1,18 +1,14 @@
 CHANGELOG
 ===================================
 
-0.9.1
------
-- Minor Bug fix. Issue #32.
------
-0.9.0
+0.9.3
 ----
-Script upgraded to work with Foundry 0.9.x
-=======
+- Japanese localization added.
+----
 0.9.2
 ----
-Repository Moved.
-Archived previous versions changelog.
+- Repository Moved.
+- Archived previous versions changelog.
 ----
 0.9.1
 ----
