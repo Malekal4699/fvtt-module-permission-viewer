@@ -60,8 +60,8 @@
   "socket": false,
 
   "url": "https://github.com/Malekal4699/fvtt-module-permission-viewer",
-  "manifest": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/download/0.9.3/module.json",
-  "download": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/download/0.9.3/module.zip",
+  "manifest": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/download/0.9.4/module.json",
+  "download": "https://github.com/Malekal4699/fvtt-module-permission-viewer/releases/download/0.9.4/module.zip",
 
   "protected": false
 }
