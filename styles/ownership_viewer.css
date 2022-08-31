@@ -1,36 +1,36 @@
-div.permission-viewer {
+div.ownership-viewer {
   max-width: max-content;
   margin: auto 5px;
   line-height: initial;
   display: block ruby;
 }
 
-div.permission-viewer > a {
+div.ownership-viewer > a {
     display:inline-flex;
 }
 
 
-.permission-viewer-user {
-    width: 8px;
-    height: 8px;
+.ownership-viewer-user {
+    width: 10px;
+    height: 10px;
     margin-left: 2px;
     margin-right: 2px;
     margin: auto 2px auto 2px;
 }
 
-.permission-viewer-all {
+.ownership-viewer-all {
     width: 0;
     height: 0;
     margin: auto 2px auto 2px;
-    border-bottom: 6px solid red;
-    border-top: 6px solid green;
-    border-left: 6px solid yellow;
-    border-right: 6px solid blue;
+    border-bottom: 7px solid red;
+    border-top: 7px solid green;
+    border-left: 7px solid yellow;
+    border-right: 7px solid blue;
 }
 
 
 
-.permission-viewer-limited {
+.ownership-viewer-limited {
     -webkit-transform-origin:50% 50%;
     -ms-transform-origin:50% 50%;
     transform-origin:50% 50%;
@@ -40,10 +40,10 @@ div.permission-viewer > a {
     transform: rotate(45deg);
 }
 
-.permission-viewer-observer {
+.ownership-viewer-observer {
     border-radius: 0;
 }
 
-.permission-viewer-owner {
+.ownership-viewer-owner {
     border-radius: 50%;
 }
