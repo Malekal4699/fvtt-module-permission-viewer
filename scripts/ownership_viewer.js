@@ -7,17 +7,22 @@ class OwnershipViewer {
 
         // Get the current directory's right-click context options, then tore the ownership config option
         const contextOptions = obj._getEntryContextOptions();                               
-        const ownershipOption = contextOptions.find(e => e.name === 'OWNERSHIP.Configure')
+        const ownershipOption = contextOptions.find(e => e.name === 'OWNERSHIP.Configure');
 
-        // Gather all documents in the current directory
-        let collection = obj.constructor.collection;
+        // Determine if we are working with a directory or a journal sheet
+        const isJournalSheet = (obj.constructor.name === "JournalSheet");
+
+        // Gather all documents in the current directory or journal
+        var collection = (isJournalSheet ? obj.object.collections.pages : obj.constructor.collection);
+
+        var document_list = html.find(`li.directory-item${isJournalSheet ? ".level1" : ".document"}`);
 
         // Interate through each directory list item.
-        for (let li of html.find("li.directory-item.document")) {                           
+        for (let li of document_list) {                           
             
             // Match it to the corresponding document
             li = $(li)
-            let document = collection.get(li.attr("data-document-id"))     
+            var document =  collection.get(li.attr(`data-${isJournalSheet ? "page" : "document"}-id`));
             let users = []
             
             // Iterate through each ownership definition on the document
@@ -25,7 +30,7 @@ class OwnershipViewer {
                 let ownership = document.ownership[id]   
                 
                 // If the ownership definition isn't 'None'...
-                if (ownership >= CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED) {
+                if (ownership != CONST.DOCUMENT_OWNERSHIP_LEVELS.NONE) {
                     let bg_color = "transparent"
                     
                     // And if the ownership definition isn't 'All Players' (default) or a GM, set 'bg_color' to the user's color
@@ -42,7 +47,9 @@ class OwnershipViewer {
                     let user_div = $('<div></div>')
                     user_div.attr("data-user-id", id)
                     
-                    if (ownership === CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED) {
+                    if (ownership === CONST.DOCUMENT_OWNERSHIP_LEVELS.INHERIT){
+                        user_div.addClass("ownership-viewer-inherit");
+                    } else if (ownership === CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED) {
                         user_div.addClass("ownership-viewer-limited")
                     } else if (ownership === CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER) {
                         user_div.addClass("ownership-viewer-observer")
@@ -75,18 +82,36 @@ class OwnershipViewer {
             } else {
                 div.append(...users)
             }
-            li.append(div)
+
+            if (isJournalSheet){
+                li.find(".page-ownership").remove();
+                li.find(".page-heading").append(div);
+            } else {
+                li.append(div);
+            }
         }
         
         // Ensure any clicks on the OwnershipViewer div open the ownership config for that document
-        if (ownershipOption)
-            html.find(".ownership-viewer").click(event => {
-                event.preventDefault();
-                event.stopPropagation();
-                let li = $(event.currentTarget).closest("li")
-                if (li)
-                    ownershipOption.callback(li)
-            })
+        if (ownershipOption){
+            function register_click_events(){
+                html.find(".ownership-viewer").click(event => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    let li = $(event.currentTarget).closest("li")
+                    if (li)
+                        ownershipOption.callback(li)
+                })
+            }
+            if (isJournalSheet){
+                // On journal sheets, delay registering click events until the page is selected and its header is expanded
+                Hooks.once("renderJournalPageSheet", () => {
+                    register_click_events();
+                });
+            } else {
+                register_click_events();
+            }
+        }
+            
     }
 
     // Update the user color in OwnershipViewer divs if the user is edited
@@ -124,6 +149,7 @@ class OwnershipViewer {
     }
 }
 
+Hooks.on('renderJournalSheet', OwnershipViewer.directoryRendered)
 Hooks.on('renderJournalDirectory', OwnershipViewer.directoryRendered)
 Hooks.on('renderSceneDirectory', OwnershipViewer.directoryRendered)
 Hooks.on('renderActorDirectory', OwnershipViewer.directoryRendered)
