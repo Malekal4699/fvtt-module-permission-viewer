@@ -30,7 +30,19 @@ div.ownership-viewer > a {
 
 
 
+.ownership-viewer-all.ownership-viewer-inherit {
+    /* Move the center point up on the triangle*/
+    border-top-width: 5px;
+    border-bottom-width: 9px;
+}
+
+.ownership-viewer-inherit {
+    /* Create a downwards triangle */
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
 .ownership-viewer-limited {
+    /* Create a diamond */
     -webkit-transform-origin:50% 50%;
     -ms-transform-origin:50% 50%;
     transform-origin:50% 50%;
@@ -41,9 +53,11 @@ div.ownership-viewer > a {
 }
 
 .ownership-viewer-observer {
+    /* Create a square */
     border-radius: 0;
 }
 
 .ownership-viewer-owner {
+    /* Create a circle */
     border-radius: 50%;
 }
